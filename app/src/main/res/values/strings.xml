@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Grow Up</string>
+    <string name="title_activity_add_entry_view">AddEntryView</string>
+    <string name="title_activity_add_goal_view">AddGoalView</string>
 </resources>
