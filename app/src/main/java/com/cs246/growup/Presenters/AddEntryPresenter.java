@@ -1,6 +1,6 @@
 package com.cs246.growup.Presenters;
 
-import com.cs246.growup.Entry;
+import com.cs246.growup.Models.Entry;
 
 public class AddEntryPresenter {
 

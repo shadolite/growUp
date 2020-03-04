@@ -1,9 +1,9 @@
 package com.cs246.growup.Presenters;
 
-import com.cs246.growup.Config;
-import com.cs246.growup.Entry;
-import com.cs246.growup.Goal;
-import com.cs246.growup.MainActivity;
+import com.cs246.growup.Models.Config;
+import com.cs246.growup.Models.Entry;
+import com.cs246.growup.Models.Goal;
+import com.cs246.growup.Views.MainActivity;
 
 import java.util.List;
 

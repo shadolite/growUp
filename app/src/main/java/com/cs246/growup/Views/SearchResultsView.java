@@ -1,4 +1,4 @@
-package com.cs246.growup;
+package com.cs246.growup.Views;
 
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;

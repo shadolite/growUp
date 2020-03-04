@@ -1,6 +1,6 @@
 package com.cs246.growup.Presenters;
 
-import com.cs246.growup.Goal;
+import com.cs246.growup.Models.Goal;
 
 public class AddGoalPresenter {
 

@@ -1,4 +1,4 @@
-package com.cs246.growup;
+package com.cs246.growup.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
+import com.cs246.growup.R;
 
 public class MainActivity extends AppCompatActivity {
 
