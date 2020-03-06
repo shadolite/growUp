@@ -15,8 +15,11 @@ public class Storage {
         Entry = entry;
     }
 
-    public void writeFile(String goalEntry){
+
+
+    public void writeFile(Context context,String goalEntry){
         String filename = "myfile.txt";
+
 
 
         Gson gson = new Gson();
@@ -26,7 +29,7 @@ public class Storage {
 
         try {
 
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(s.getBytes());
             outputStream.close();
         } catch (Exception e) {
