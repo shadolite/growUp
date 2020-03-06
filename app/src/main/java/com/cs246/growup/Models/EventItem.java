@@ -1,12 +1,19 @@
 package com.cs246.growup.Models;
 
-public class EventItem {
-    public int startTime(){
-        int dateTime = 0;
-        return dateTime;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class EventItem extends Item {
+    public Calendar startTime(int year, int month, int dayOfMonth, int hourOfDay, int minute){
+
+        //GregorianCalendar has a constructor that accepts year, month, dayOfMonth, hourOfDay, minute
+        Calendar start = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute);
+        return start;
     }
-    public int endTime(){
-        int dateTime = 0;
-        return dateTime;
+    public Calendar endTime(int year, int month, int dayOfMonth, int hourOfDay, int minute){
+
+        //GregorianCalendar has a constructor that accepts year, month, dayOfMonth, hourOfDay, minute
+        Calendar end = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute);
+        return end;
     }
 }
