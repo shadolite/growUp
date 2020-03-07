@@ -10,9 +10,9 @@ public class Storage {
 
 
 
-    public void writeFile(Context context, User user){
+    public void writeFile(User user){
         String filename = "myfile.txt";
-
+        Context context = null;
         Gson gson = new Gson();
         String s = gson.toJson(user);
 
@@ -23,6 +23,7 @@ public class Storage {
             outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(s.getBytes());
             outputStream.close();
+            System.out.println(s);
 
         } catch (Exception e) {
             e.printStackTrace();

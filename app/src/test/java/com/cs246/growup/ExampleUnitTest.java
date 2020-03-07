@@ -1,7 +1,12 @@
 package com.cs246.growup;
 
+import android.content.Context;
+
+import com.cs246.growup.Models.Entry;
 import com.cs246.growup.Models.Goal;
+import com.cs246.growup.Models.NoteItem;
 import com.cs246.growup.Models.Storage;
+import com.cs246.growup.Models.User;
 
 import org.junit.Test;
 
@@ -20,5 +25,16 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 
+public void TestUser(){
+        User testUser = new User();
+        Entry testEntry = new Entry();
+        testEntry.add(new NoteItem("Test Item"));
+        testUser.addEntry(testEntry);
 
+        Storage storage = new Storage();
+
+        storage.writeFile(testUser);
+
+
+}
 }
