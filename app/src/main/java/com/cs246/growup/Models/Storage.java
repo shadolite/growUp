@@ -6,21 +6,12 @@ import com.google.gson.Gson;
 import java.io.FileInputStream;
 
 public class Storage {
-    String Entry;
-    String Goals;
-    public void createFile(){}
-    public void readFile(){}
-
-    public Storage(String entry) {
-        Entry = entry;
-    }
 
 
 
-    public void writeFile(Context context,String goalEntry){
+
+    public void writeFile(Context context,Goal goalEntry){
         String filename = "myfile.txt";
-
-
 
         Gson gson = new Gson();
         String s = gson.toJson(goalEntry);
