@@ -4,10 +4,11 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class EventItem extends Item {
-    public Calendar startTime;
-    public Calendar endTime;
+    private Calendar startTime;
+    private Calendar endTime;
 
-    public EventItem() {
+    public EventItem(String title) {
+        super(title);
         startTime = new GregorianCalendar();
         endTime = new GregorianCalendar();
     }

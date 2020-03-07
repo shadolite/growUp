@@ -10,11 +10,11 @@ public class Storage {
 
 
 
-    public void writeFile(Context context,Goal goalEntry){
+    public void writeFile(Context context, User user){
         String filename = "myfile.txt";
 
         Gson gson = new Gson();
-        String s = gson.toJson(goalEntry);
+        String s = gson.toJson(user);
 
         FileOutputStream outputStream;
 
@@ -26,7 +26,8 @@ public class Storage {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }}
+        }
+    }
 
 
 }

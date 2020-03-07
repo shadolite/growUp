@@ -3,7 +3,8 @@ package com.cs246.growup.Models;
 public class CheckBoxItem extends Item {
     private boolean isComplete;
 
-    public CheckBoxItem() {
+    public CheckBoxItem(String title) {
+        super(title);
         isComplete = false;
     }
 
