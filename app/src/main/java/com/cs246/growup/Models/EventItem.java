@@ -4,16 +4,27 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class EventItem extends Item {
-    public Calendar startTime(int year, int month, int dayOfMonth, int hourOfDay, int minute){
+    public Calendar startTime;
+    public Calendar endTime;
 
-        //GregorianCalendar has a constructor that accepts year, month, dayOfMonth, hourOfDay, minute
-        Calendar start = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute);
-        return start;
+    public EventItem() {
+        startTime = new GregorianCalendar();
+        endTime = new GregorianCalendar();
     }
-    public Calendar endTime(int year, int month, int dayOfMonth, int hourOfDay, int minute){
 
-        //GregorianCalendar has a constructor that accepts year, month, dayOfMonth, hourOfDay, minute
-        Calendar end = new GregorianCalendar(year, month, dayOfMonth, hourOfDay, minute);
-        return end;
+    public Calendar getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Calendar startTime) {
+        this.startTime = startTime;
+    }
+
+    public Calendar getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Calendar endTime) {
+        this.endTime = endTime;
     }
 }
