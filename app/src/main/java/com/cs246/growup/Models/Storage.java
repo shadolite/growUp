@@ -23,6 +23,7 @@ public class Storage {
             outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(s.getBytes());
             outputStream.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }}
