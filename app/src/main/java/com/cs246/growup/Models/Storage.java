@@ -1,6 +1,7 @@
 package com.cs246.growup.Models;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import android.content.Context;
@@ -8,6 +9,7 @@ import com.google.gson.Gson;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Storage {
     private Context context;
@@ -16,22 +18,17 @@ public class Storage {
         this.context = context;
     }
 
-    public static void writeFile(String filename, String data){
-        FileOutputStream outputStream;
-
+    public boolean writeFile(String filename, String data){
         try {
-
-
-            outputStream = filename.openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(data.getBytes());
-            outputStream.close();
-
-
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(context.openFileOutput(filename, Context.MODE_PRIVATE)));
+            writer.write(data);
+            writer.close();
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
-
     }
 
     public static void readFile(Context context, User user) throws FileNotFoundException {
@@ -60,6 +57,6 @@ public class Storage {
 
 
     public String readFile(String s) {
-
+        return null;
     }
 }
