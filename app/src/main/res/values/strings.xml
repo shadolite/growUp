@@ -2,4 +2,7 @@
     <string name="app_name">Grow Up</string>
     <string name="title_activity_add_entry_view">AddEntryView</string>
     <string name="title_activity_add_goal_view">AddGoalView</string>
+    <string name="menu_action_home">Home</string>
+    <string name="menu_action_calendar">Calendar</string>
+    <string name="menu_action_goal">Goals</string>
 </resources>
