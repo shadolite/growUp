@@ -10,24 +10,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Storage {
+    private Context context;
 
+    public Storage(Context context)  {
+        this.context = context;
+    }
 
-
-
-    public static void writeFile(Context context, User user){
-        String filename = "myfile.txt";
-
-
-        Gson gson = new Gson();
-        String s = gson.toJson(user);
-
+    public static void writeFile(String filename, String data){
         FileOutputStream outputStream;
 
         try {
 
 
-            outputStream = context.openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(s.getBytes());
+            outputStream = filename.openFileOutput(filename, Context.MODE_PRIVATE);
+            outputStream.write(data.getBytes());
             outputStream.close();
 
 
@@ -63,4 +59,7 @@ public class Storage {
     }
 
 
+    public String readFile(String s) {
+
+    }
 }
