@@ -38,7 +38,7 @@ public class Storage {
 
     }
 
-    public static void readFile(Context context) throws FileNotFoundException {
+    public static void readFile(Context context, User user) throws FileNotFoundException {
         StringBuilder sb = new StringBuilder();
         String json = sb.toString();
         Gson gson = new Gson();
@@ -59,6 +59,7 @@ public class Storage {
             }
 
         }
+        String s = gson.toJson(user);
     }
 
 
