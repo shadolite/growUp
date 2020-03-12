@@ -8,11 +8,11 @@ import com.cs246.growup.R;
 
 public class SearchResultsView extends AppCompatActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle searched) {
+        super.onCreate(searched);
         setContentView(R.layout.activity_search_view);
     }
-    public View onCreateView() {return null;}
+
 
     //only needed if we need to override the onStop() method included with AppCompatActivity
     public void onStop() {
