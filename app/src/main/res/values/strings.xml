@@ -9,4 +9,8 @@
     <string name="menu_action_search">Search</string>
     <string name="add_goal_title_hint">Goal Title</string>
     <string name="add_goal_description_hint">Description</string>
+    <string name="spiritual_tag">Spiritual</string>
+    <string name="social_tag">Social</string>
+    <string name="physical_tag">Physical</string>
+    <string name="intellectual_tag">Intellectual</string>
 </resources>

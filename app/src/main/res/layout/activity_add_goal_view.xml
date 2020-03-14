@@ -26,7 +26,7 @@
         android:id="@+id/textInputLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/toggleButton"
+        app:layout_constraintBottom_toTopOf="@+id/spiritual_tag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -39,49 +39,64 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <ToggleButton
-        android:id="@+id/toggleButton"
+        android:id="@+id/spiritual_tag"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="4dp"
-        android:text="ToggleButton"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButton2"
+        android:background="@android:color/transparent"
+        android:text="@string/spiritual_tag"
+        android:textOff="@string/spiritual_tag"
+        android:textOn="@string/spiritual_tag"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/social_tag"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <ToggleButton
-        android:id="@+id/toggleButton2"
+        android:id="@+id/social_tag"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="4dp"
-        android:text="ToggleButton"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButton3"
-        app:layout_constraintStart_toEndOf="@+id/toggleButton"
+        android:background="@android:color/transparent"
+        android:text="@string/social_tag"
+        android:textOff="@string/social_tag"
+        android:textOn="@string/social_tag"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/intellectual_tag"
+        app:layout_constraintStart_toEndOf="@+id/spiritual_tag"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <ToggleButton
-        android:id="@+id/toggleButton3"
+        android:id="@+id/intellectual_tag"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="26dp"
-        android:text="ToggleButton"
-        app:layout_constraintEnd_toStartOf="@+id/toggleButton4"
-        app:layout_constraintStart_toEndOf="@+id/toggleButton2"
+        android:background="@android:color/transparent"
+        android:text="@string/intellectual_tag"
+        android:textOff="@string/intellectual_tag"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/physical_tag"
+        app:layout_constraintStart_toEndOf="@+id/social_tag"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <ToggleButton
-        android:id="@+id/toggleButton4"
+        android:id="@+id/physical_tag"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="4dp"
-        android:text="ToggleButton"
+        android:background="@android:color/transparent"
+        android:text="@string/physical_tag"
+        android:textOff="@string/physical_tag"
+        android:textOn="@string/physical_tag"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/toggleButton3"
+        app:layout_constraintStart_toEndOf="@+id/intellectual_tag"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
