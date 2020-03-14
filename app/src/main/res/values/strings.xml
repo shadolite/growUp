@@ -5,4 +5,6 @@
     <string name="menu_action_home">Home</string>
     <string name="menu_action_calendar">Calendar</string>
     <string name="menu_action_goal">Goals</string>
+    <string name="menu_action_settings">Settings</string>
+    <string name="menu_action_search">Search</string>
 </resources>

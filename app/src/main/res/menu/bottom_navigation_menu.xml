@@ -7,6 +7,6 @@
         android:icon="@drawable/ic_action_calendar"
         android:title="@string/menu_action_calendar" />
     <item android:id="@+id/goal"
-        android:icon="@drawable/ic_action_goal"
+        android:icon="@drawable/ic_goal"
         android:title="@string/menu_action_goal" />
 </menu>
