@@ -17,4 +17,64 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="66dp">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/add_goal_title_hint"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="66dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="116dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_goal_description_hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="7dp"
+        android:text="ToggleButton"
+        app:layout_constraintEnd_toStartOf="@+id/toggleButton2"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton3"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        tools:layout_editor_absoluteX="209dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton4"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:text="ToggleButton"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="180dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

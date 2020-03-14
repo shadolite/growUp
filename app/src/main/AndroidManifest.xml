@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Views.AddGoalView"></activity>
+        <activity
+            android:name=".Views.AddGoalView"
+            android:windowSoftInputMode="stateVisible">
+        </activity>
         <activity android:name=".Views.AddEntryView" />
         <activity android:name=".Views.MainActivity">
             <intent-filter>
