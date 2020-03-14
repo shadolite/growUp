@@ -31,9 +31,9 @@ public void TestUser(){
         testEntry.add(new NoteItem("Test Item"));
         testUser.addEntry(testEntry);
 
-        Storage storage = new Storage();
+        //Storage storage = new Storage();
 
-        storage.writeFile(testUser);
+        //storage.writeFile(testUser);
 
 
 }

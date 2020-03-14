@@ -6,38 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Views.AddGoalView">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="66dp">
-
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_goal_title_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/add_goal_title_hint"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="66dp" />
-
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="116dp">
+        app:layout_constraintBottom_toTopOf="@+id/toggleButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -49,32 +41,46 @@
         android:id="@+id/toggleButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="4dp"
         android:text="ToggleButton"
         app:layout_constraintEnd_toStartOf="@+id/toggleButton2"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <ToggleButton
         android:id="@+id/toggleButton2"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginEnd="4dp"
         android:text="ToggleButton"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintEnd_toStartOf="@+id/toggleButton3"
+        app:layout_constraintStart_toEndOf="@+id/toggleButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
         android:id="@+id/toggleButton3"
         android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="138dp"
         android:text="ToggleButton"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintEnd_toStartOf="@+id/toggleButton4"
+        app:layout_constraintStart_toEndOf="@+id/toggleButton2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
         android:id="@+id/toggleButton4"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="4dp"
         android:text="ToggleButton"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="180dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/toggleButton3"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
