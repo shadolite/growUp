@@ -13,4 +13,6 @@
     <string name="social_tag">Social</string>
     <string name="physical_tag">Physical</string>
     <string name="intellectual_tag">Intellectual</string>
+    <string name="add_title">Title</string>
+    <string name="add_event_title">Event Title</string>
 </resources>
