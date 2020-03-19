@@ -28,4 +28,8 @@ public class MainPresenter {
     public void notifyListenersDataChanged(){
 
     }
+
+    public void initialize() {
+
+    }
 }

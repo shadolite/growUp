@@ -3,6 +3,7 @@ package com.cs246.growup.Views;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Entry;
@@ -12,12 +13,12 @@ import com.cs246.growup.Presenters.Listener;
 import java.util.List;
 
 
-public class BrowseFragment extends AppCompatActivity implements Listener {
+public class BrowseFragment extends Fragment implements Listener {
 
     public BrowseFragment() {};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
