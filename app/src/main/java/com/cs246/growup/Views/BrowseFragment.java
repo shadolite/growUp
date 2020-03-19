@@ -15,7 +15,7 @@ import java.util.List;
 
 public class BrowseFragment extends Fragment implements Listener {
 
-    public BrowseFragment() {};
+    public BrowseFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
