@@ -3,6 +3,8 @@ package com.cs246.growup.Views;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ToggleButton;
 
 import com.cs246.growup.R;
 
@@ -12,6 +14,14 @@ public class AddGoalView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_goal_view);
+        final ToggleButton button = findViewById(R.id.spiritual_tag);
+       /* button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                button.setBackgroundColor()
+            }
+        });*/
+
     }
 
     @Override

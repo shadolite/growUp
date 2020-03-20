@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cs246.growup.R;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 
 public class AddEntryView extends AppCompatActivity {
 
@@ -11,6 +12,7 @@ public class AddEntryView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_entry_view);
+//        textview.setMovementMethod(new ScrollingMovementMethod());
     }
 
     @Override
