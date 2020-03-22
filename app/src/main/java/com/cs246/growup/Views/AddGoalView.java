@@ -14,13 +14,14 @@ public class AddGoalView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_goal_view);
-        final ToggleButton button = findViewById(R.id.spiritual_tag);
-       /* button.setOnClickListener(new View.OnClickListener() {
+        final ToggleButton buttonSpiritualTag = findViewById(R.id.spiritual_tag);
+        buttonSpiritualTag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                button.setBackgroundColor()
+                buttonSpiritualTag.setBackgroundColor(getResources().getColor(R.color.colorSpiritualTag));
+                buttonSpiritualTag.setTextColor(getResources().getColor(R.color.white));
             }
-        });*/
+        });
 
     }
 
