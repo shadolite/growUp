@@ -44,7 +44,7 @@ public class SearchResultsView extends AppCompatActivity {
             rvResults = rootView.findViewById(R.id.searchList);
 
 
-            tvResultsCount.setText("0 Scripture(s) Found");
+            tvResultsCount.setText("No Results Found");
             rvResults.setLayoutManager(new LinearLayoutManager(rootView.getContext(), LinearLayoutManager.VERTICAL, false));
 
 
