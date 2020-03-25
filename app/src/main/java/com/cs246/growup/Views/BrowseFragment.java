@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Entry;
 import com.cs246.growup.Models.Goal;
+import com.cs246.growup.Models.User;
 import com.cs246.growup.Presenters.Listener;
 
 import java.util.List;
@@ -30,12 +31,12 @@ public class BrowseFragment extends Fragment implements Listener {
     }
 
     @Override
-    public void notifyDataReady(Config config, List<Goal> goals, Entry entry) {
+    public void notifyDataReady(User user, Config config) {
 
     }
 
     @Override
-    public void NotifyConfigChanged() {
+    public void notifyConfigChanged() {
 
     }
 }

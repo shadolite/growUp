@@ -17,16 +17,6 @@ public class SearchFragment extends Fragment implements Listener {
     public void notifyDataReady() {}
     private void updateSearchResults() {}
 
-   // @Override
-    public void notifyDataReady(Config config, List<Goal> goals, Entry entry) {
-
-    }
-
-    //@Override
-    public void NotifyConfigChanged() {
-
-    }
-
     @Override
     public void notifyDataReady(User user, Config config) {
 
