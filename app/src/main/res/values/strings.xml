@@ -15,4 +15,5 @@
     <string name="intellectual_tag">Intellectual</string>
     <string name="add_title">Title</string>
     <string name="add_event_title">Event Title</string>
+    <string name="add_goal_view_label">New Goal</string>
 </resources>
