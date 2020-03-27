@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#61ba94</color>
+    <color name="colorPrimaryDark">#9E61BA94</color>
+    <color name="colorAccent">#61ba94</color>
     <color name="colorSpiritualTag">#0099cc</color>
     <color name="colorSocialTag">#009900</color>
     <color name="colorIntellectualTag">#cc0000</color>

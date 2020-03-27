@@ -1,29 +1,35 @@
 package com.cs246.growup.Views;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ToggleButton;
+import androidx.appcompat.widget.Toolbar;
 
 import com.cs246.growup.R;
 
 public class AddGoalView extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_goal_view);
-        /*final ToggleButton buttonSpiritualTag = findViewById(R.id.spiritual_tag);
-        buttonSpiritualTag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonSpiritualTag.setBackgroundColor(getResources().getColor(R.color.colorSpiritualTag));
-                buttonSpiritualTag.setTextColor(getResources().getColor(R.color.white));
-            }
-        });*/
-
+        //Toolbar addGoalToolbar = findViewById(R.id.add_goal_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
 
     @Override
     public void onStop() {
