@@ -42,7 +42,7 @@ public class MainPresenter {
         }
     }
 
-    public void notifyListenersUserReady(){
+    public void notifyListenersDataReady(){
 
         userReady = true;
         for (Listener listener : registeredListeners) {
@@ -55,6 +55,14 @@ public class MainPresenter {
         for (Listener listener : registeredListeners) {
             listener.notifyConfigChanged();
         }
+    }
+
+    public void loadUser(){
+        user = user.readUser(context);
+    }
+
+    public void saveUser(){
+        user.saveUser(context);
     }
 
     public Config getConfig() {
