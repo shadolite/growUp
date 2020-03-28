@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
@@ -63,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadFragment(int tabID){
 
+    }
+
+    public void onClick(MenuItem item) {
+        Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
+        startActivity(intent);
     }
 
 //    private class CollectionPagerAdapter extends FragmentPagerAdapter{

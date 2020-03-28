@@ -3,8 +3,10 @@
     <item android:id="@+id/home"
         android:icon="@drawable/ic_action_home"
         android:title="@string/menu_action_home"/>
-    <item android:id="@+id/calendar"
+    <item
+        android:id="@+id/calendar"
         android:icon="@drawable/ic_action_calendar"
+        android:onClick="onClick"
         android:title="@string/menu_action_calendar" />
     <item android:id="@+id/goal"
         android:icon="@drawable/ic_goal"

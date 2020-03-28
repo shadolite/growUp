@@ -76,11 +76,6 @@
         app:layout_constraintTop_toBottomOf="@+id/searchList"
         app:menu="@menu/bottom_navigation_menu" >
 
-        <Button
-            android:id="@+id/btngocalendar"
-            android:layout_width="146dp"
-            android:layout_height="68dp"
-            android:text="@string/calendar" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
