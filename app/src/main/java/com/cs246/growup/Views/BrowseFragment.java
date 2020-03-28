@@ -14,7 +14,7 @@ import com.cs246.growup.Presenters.Listener;
 import java.util.List;
 
 
-public class BrowseFragment extends Fragment implements Listener {
+public class BrowseFragment extends AppCompatActivity implements Listener {
 
     public BrowseFragment() {}
 

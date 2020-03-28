@@ -8,12 +8,14 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="0dp"
-        android:layout_height="259dp"
+        android:layout_width="421dp"
+        android:layout_height="315dp"
         app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"  />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
@@ -72,7 +74,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchList"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation_menu" >
+
+        <Button
+            android:id="@+id/btngocalendar"
+            android:layout_width="146dp"
+            android:layout_height="68dp"
+            android:text="@string/calendar" />
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
