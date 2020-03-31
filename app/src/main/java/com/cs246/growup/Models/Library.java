@@ -23,28 +23,25 @@ public class Library {
     }
 
     public void loadVolume(String title, String url, boolean hasBooks) {
-        Log.d("Library", "Attempting to read "+title+" from file");
+        Log.d("Library", "Attempting to read " + title + " from file");
         String data = fileHelper.readFile(title);
         if (data == null) {
-            Log.d("Library","Attempting to read "+title+" from network");
+            Log.d("Library", "Attempting to read " + title + " from network");
             data = httpHelper.readHTTP(url);
         }
         Entry entry = null;
         if (hasBooks) {
             try {
                 entry = gson.fromJson(data, Entry.class);
-            }
-            catch (JsonSyntaxException jse) { // Redownload if the JSON file is corrupted
+            } catch (JsonSyntaxException jse) { // Redownload if the JSON file is corrupted
                 data = httpHelper.readHTTP(url);
                 entry = gson.fromJson(data, Entry.class);
             }
-        }
-        else {
+        } else {
             Goal goal = null;
             try {
                 goal = gson.fromJson(data, Goal.class);
-            }
-            catch (JsonSyntaxException jse) {
+            } catch (JsonSyntaxException jse) {
                 data = httpHelper.readHTTP(url);
                 goal = gson.fromJson(data, Goal.class);
             }
@@ -55,13 +52,12 @@ public class Library {
             }
         }
         if (entry != null) {
-            Log.d("Library", "Writing "+title+" to file");
+            Log.d("Library", "Writing " + title + " to file");
             fileHelper.writeFile(title, data);
             entry.setTitle(title);
             entries.add(entry);
-        }
-        else {
-            Log.d("Library","Error converting "+title+" from JSON");
+        } else {
+            Log.d("Library", "Error converting " + title + " from JSON");
         }
     }
 
@@ -85,3 +81,4 @@ public class Library {
         }
         return titles;
     }
+}
