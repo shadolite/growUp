@@ -1,5 +1,7 @@
 package com.cs246.growup.Models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -11,12 +13,19 @@ public class Goal {
     public List <Item> items;
     public List <Tag> tags;
     public GregorianCalendar dueDate;
+    @SerializedName(value="goal", alternate = {"title"})
+    private String title;
 
     public Goal() {
         entries = new ArrayList<Entry>();
         items = new ArrayList<Item>();
         tags = new ArrayList<Tag>();
         dueDate = new GregorianCalendar();
+
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public GregorianCalendar getDueDate() {
