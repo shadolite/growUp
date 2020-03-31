@@ -28,10 +28,9 @@ public class MainPresenter {
     }
 
     public void initialize() {
-        // Bro. MacBeth uses task threading to handle this. How do we want to manage it? I'm pretty
-        // sure it's a requirement for our project.
         config = Config.readConfig(context);
-        user = user.readUser(context);
+        LoadUserTask loadUserTask = new LoadUserTask(this);
+        loadUserTask.execute();
     }
 
     public void registerListeners(Listener listener){
