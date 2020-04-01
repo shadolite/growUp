@@ -54,6 +54,10 @@ public class SearchResultsView extends AppCompatActivity {
             rootView = null;
         }
 
+        //only needed if we need to override the onStop() method included with AppCompatActivity
+        public void onStop() {
+            super.onStop();
+        }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -80,7 +84,6 @@ public class SearchResultsView extends AppCompatActivity {
 
             return rootView;
         }
-
     }
 }
 
