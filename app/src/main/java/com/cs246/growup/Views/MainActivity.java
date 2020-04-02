@@ -2,6 +2,7 @@ package com.cs246.growup.Views;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -15,6 +16,7 @@ import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
+import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -23,14 +25,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
+    ActivityMainBinding bind;
+    boolean isRotated = false;
     private MainPresenter presenter;
 //    private CollectionPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        bind = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        bind.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isRotated = Animations.rotateFabAdd(v, !isRotated);
+            }
+        });
+        //setContentView(R.layout.activity_main);
 
         presenter = new MainPresenter(this);
         presenter.initialize();
