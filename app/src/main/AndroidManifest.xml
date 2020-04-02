@@ -8,16 +8,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Views.CalendarActivity"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".Views.CalendarActivity" />
         <activity
             android:name=".Views.AddGoalView"
             android:exported="true"
             android:label="@string/add_goal_view_label"
-            android:windowSoftInputMode="stateVisible"></activity>
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".Views.AddEntryView"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:label="@string/add_entry_view_label"/>
         <activity android:name=".Views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
