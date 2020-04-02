@@ -19,4 +19,6 @@
     <string name="date">date</string>
     <string name="add_goal_view_label">New Goal</string>
     <string name="add_entry_view_label">New Entry</string>
+    <string name="entry_title">Entry Title</string>
+    <string name="entry_note">Note</string>
 </resources>

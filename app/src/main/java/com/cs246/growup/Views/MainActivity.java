@@ -40,6 +40,39 @@ public class MainActivity extends AppCompatActivity {
                 isRotated = Animations.rotateFabAdd(v, !isRotated);
             }
         });
+
+        Animations.initial(bind.fabAddGoal);
+        Animations.initial(bind.fabAddEntry);
+
+        bind.floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                isRotated = Animations.rotateFabAdd(v, !isRotated);
+                if(isRotated) {
+                    Animations.popIn(bind.fabAddGoal);
+                    Animations.popIn(bind.fabAddEntry);
+                }else {
+                    Animations.popOut(bind.fabAddGoal);
+                    Animations.popOut(bind.fabAddEntry);
+                }
+            }
+        });
+
+        bind.fabAddGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentGoal = new Intent(MainActivity.this, AddGoalView.class);
+                startActivity(intentGoal);
+            }
+        });
+        
+        bind.fabAddEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentEntry = new Intent(MainActivity.this, AddEntryView.class);
+                startActivity(intentEntry);
+            }
+        });
         //setContentView(R.layout.activity_main);
 
         presenter = new MainPresenter(this);
