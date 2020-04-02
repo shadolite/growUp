@@ -58,9 +58,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <searchable
-            android:hint="@string/search_hint"
-            android:label="@string/app_label"></searchable>
+<!--        <searchable-->
+<!--            android:hint="@string/search_hint"-->
+<!--            android:label="@string/app_label"></searchable>-->
     </SearchView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
