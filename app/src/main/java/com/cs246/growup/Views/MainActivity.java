@@ -3,26 +3,18 @@ package com.cs246.growup.Views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.cs246.growup.Presenters.BrowseCalenderPresenter;
+import com.cs246.growup.Models.SearchData;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
-
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding bind;
@@ -114,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(MenuItem item) {
         Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
         startActivity(intent);
+    }
+
+    public void loadFragment(SearchData record) {
     }
 
 //    private class CollectionPagerAdapter extends FragmentPagerAdapter{
