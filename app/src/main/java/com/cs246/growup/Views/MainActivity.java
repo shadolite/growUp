@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         });
         //setContentView(R.layout.activity_main);
 
-        browseEntryFragment = new BrowseEntryFragment();
+        /*browseEntryFragment = new BrowseEntryFragment();
         presenter = new MainPresenter(this);
         presenter.initialize();
 
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
 
         registerFragment(browseEntryFragment);
         setBottomNavigationListener();
-        setSearchListener();
+        setSearchListener();*/
     }
 
     private void setSearchListener() {
