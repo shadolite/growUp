@@ -12,7 +12,7 @@
         <activity
             android:name=".Views.CalendarActivity"
             android:exported="true"
-            android:label="@string/calendar"/>
+            android:label="@string/calendar" />
         <activity
             android:name=".Views.AddGoalView"
             android:exported="true"
@@ -20,7 +20,7 @@
         <activity
             android:name=".Views.AddEntryView"
             android:exported="true"
-            android:label="@string/add_entry_view_label"/>
+            android:label="@string/add_entry_view_label" />
         <activity android:name=".Views.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name=".Views.SearchResultsView"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

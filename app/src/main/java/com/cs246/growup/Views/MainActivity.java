@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.cs246.growup.Models.SearchData;
 import com.cs246.growup.Models.Config;
@@ -23,6 +24,12 @@ import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity implements Listener {
     ActivityMainBinding bind;
@@ -76,6 +83,16 @@ public class MainActivity extends AppCompatActivity implements Listener {
                 startActivity(intentEntry);
             }
         });
+        TextView theDate = (TextView) findViewById(R.id.currentDate);
+
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(new Date());
+        Date entryDate = Calendar.getInstance().getTime(); //cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        String strDate = dateFormat.format(entryDate);
+
+        theDate.setText(strDate);
         //setContentView(R.layout.activity_main);
 
         /*browseEntryFragment = new BrowseEntryFragment();

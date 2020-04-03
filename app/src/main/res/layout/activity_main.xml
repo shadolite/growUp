@@ -7,16 +7,21 @@
         android:layout_height="match_parent"
         tools:context=".Views.MainActivity">
 
-        <CalendarView
-            android:id="@+id/calendarView"
+
+        <TextView
+            android:id="@+id/currentDate"
             android:layout_width="421dp"
-            android:layout_height="315dp"
+            android:layout_height="145dp"
+            android:gravity="center"
+            android:text=""
+            android:textAlignment="gravity"
+            android:textSize="30sp"
             app:layout_constraintBottom_toTopOf="@+id/tabLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:text="@string/dateToday" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -25,7 +30,7 @@
             app:layout_constraintBottom_toTopOf="@+id/searchList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView">
+            app:layout_constraintTop_toBottomOf="@+id/currentDate">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
