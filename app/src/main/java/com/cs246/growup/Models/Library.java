@@ -48,7 +48,7 @@ public class Library {
             if (goal != null) {
                 entry = new Entry();
                 entry.setTitle(title);
-                entry.getGoals().add(goal);
+                //entry.getGoals().add(goal);
             }
         }
         if (entry != null) {

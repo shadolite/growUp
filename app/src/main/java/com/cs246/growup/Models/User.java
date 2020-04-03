@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -38,7 +39,7 @@ public class User {
         Gson gson = new Gson();
         User user = gson.fromJson(sUser, User.class);
         if (user == null) {
-            user = new User();
+            user = UserTest.getTestUser();
         }
         return user;
     }
@@ -49,5 +50,16 @@ public class User {
         String sUser = gson.toJson(this);
         storage.writeFile("user.txt", sUser);
 
+    }
+
+    public Entry getEntry(Date date) {
+        for (Entry entry : entries
+                ) {
+            if (entry.entryDate == date){
+                return entry;
+            }
+        }
+
+        return new Entry();
     }
 }

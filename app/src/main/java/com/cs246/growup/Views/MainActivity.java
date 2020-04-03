@@ -3,6 +3,11 @@ package com.cs246.growup.Views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +15,23 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.cs246.growup.Models.SearchData;
+import com.cs246.growup.Models.Config;
+import com.cs246.growup.Models.User;
+import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Listener {
     ActivityMainBinding bind;
     boolean isRotated = false;
     private MainPresenter presenter;
-//    private CollectionPagerAdapter adapter;
+    private BrowseEntryFragment browseEntryFragment;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +78,13 @@ public class MainActivity extends AppCompatActivity {
         });
         //setContentView(R.layout.activity_main);
 
+        browseEntryFragment = new BrowseEntryFragment();
         presenter = new MainPresenter(this);
         presenter.initialize();
 
-//        adapter = new CollectionPagerAdapter(getSupportFragmentManager());
-//        TabLayout tabMenu = findViewById(R.id.tabLayout);
-//        tabMenu.setAdapter
+
+
+        registerFragment(browseEntryFragment);
         setBottomNavigationListener();
         setSearchListener();
     }
@@ -99,8 +111,11 @@ public class MainActivity extends AppCompatActivity {
         presenter.registerListeners(fragment);
     }
 
-    public void loadFragment(int tabID){
+    public void loadFragment(int fragmentID){
 
+        switch (fragmentID) {
+            case 0:
+        }
     }
 
     public void onClick(MenuItem item) {
@@ -108,57 +123,29 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void loadFragment(SearchData record) {
+    @Override
+    public void notifyDataReady(User user, Config config) {
+        /*TabLayout t = (TabLayout)findViewById(R.id.tabLayout);
+        loadFragment(t.getSelectedTabPosition());
+        loadFragment(0);*/
+
+        recyclerView = (RecyclerView) findViewById(R.id.searchList);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // specify an adapter (see also next example)
+        mAdapter = new BrowseAdapter(browseEntryFragment.getSelectedEventItems());
+        recyclerView.setAdapter(mAdapter);
     }
 
-//    private class CollectionPagerAdapter extends FragmentPagerAdapter{
-//
-//        private Map<Integer, Fragment> fragments;
-//
-//        public CollectionPagerAdapter(FragmentManager manager){
-//            super(manager);
-//            fragments = new HashMap<>();
-//        }
-//
-//        @Override
-//        public Fragment getItem(int i){
-//            Fragment fragment;
-//
-//            switch (i){
-//                case 0:
-//                    fragment = new BrowseEntryFragment();
-//                    fragments.put(i, fragment);
-//                    break;
-//                case 1:
-//                    fragment = new BrowseGoalFragment();
-//                    fragments.put(i, fragment);
-//                    break;
-//                case 2:
-//                    fragment = new CalendarFragment();
-//                    fragments.put(i, fragment);
-//                    break;
-//                case 3:
-//                    fragment = new SearchFragment();
-//                    fragments.put(i, fragment);
-//                    break;
-//                case 4:
-//                    fragment = new SettingsFragment();
-//                    fragments.put(i, fragment);
-//                    break;
-//                default:
-//                    fragment = null;
-//            }
-//
-//            return fragment;
-//        }
-//
-//        @Override
-//        public  int getCount(){
-//            return 5;
-//        }
-//
-//        public  Fragment getFragment(int i){
-//            return fragments.get(i);
-//        }
-//    }
+    @Override
+    public void notifyConfigChanged() {
+
+    }
 }

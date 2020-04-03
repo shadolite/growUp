@@ -7,44 +7,34 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Entry {
-    public List <Item> entries;
-    private List <Goal> goal;
-    public GregorianCalendar entryDate;
+    public List <Item> items;
+    public Date entryDate;
+    //public GregorianCalendar entryDate;
     private String title;
 
     public Entry() {
-        entries = new ArrayList<Item>();
-        entryDate = (GregorianCalendar) Calendar.getInstance();
+        items = new ArrayList<Item>();
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(new Date());
+        entryDate = cal.getTime();
     }
 
-    public Entry(GregorianCalendar entryDate) {
-        entries = new ArrayList<Item>();
-        this.entryDate = entryDate;
+    public Entry(Date date) {
+        items = new ArrayList<Item>();
+        this.entryDate = date;
     }
 
-    public void add(Item entry) {
-        entries.add(entry);
+    public void add(Item item) {
+        items.add(item);
     }
 
-    public void remove(Item entry) {
-        entries.remove(entry);
+    public void remove(Item item) {
+        items.remove(item);
     }
     public String getEntry() {
         return title;
     }
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Goal getGoal(String name) {
-        for (Goal goal : goal) {
-            if (goal.getTitle().toUpperCase().equals(name.toUpperCase())) {
-                return goal;
-            }
-        }
-        return null;
-    }
-    public List<Goal> getGoals() {
-        return goal;
     }
 }
