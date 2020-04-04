@@ -1,67 +1,65 @@
-package com.cs246.growup.Views;
+package com.cs246.growup.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.CheckedTextView;
+
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cs246.growup.Models.CheckBoxItem;
 import com.cs246.growup.Models.Item;
-import com.cs246.growup.Models.NoteItem;
 import com.cs246.growup.R;
 import java.util.List;
 
-public class BrowseNoteAdapter extends RecyclerView.Adapter<BrowseNoteAdapter.NoteViewHolder> {
+public class BrowseCheckBoxAdapter extends RecyclerView.Adapter<BrowseCheckBoxAdapter.CheckBoxViewHolder> {
 
     private List<Item> items;
 
     // Provide a suitable constructor (depends on the kind of items)
-    public BrowseNoteAdapter(List<Item> items) {
+    public BrowseCheckBoxAdapter(List<Item> items) {
         this.items = items;
     }
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class NoteViewHolder extends RecyclerView.ViewHolder {
+    public static class CheckBoxViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView titleTextView;
-        public TextView bodyTextView;
+        public CheckedTextView checkBoxView;
 
-        public NoteViewHolder(View noteItemView) {
-            super(noteItemView);
+        public CheckBoxViewHolder(View checkBoxItemView) {
+            super(checkBoxItemView);
 
-            titleTextView = noteItemView.findViewById(R.id.noteTitleTextView);
-            bodyTextView = noteItemView.findViewById(R.id.bodyTextView);
+            checkBoxView = checkBoxItemView.findViewById(R.id.checkedTextView);
         }
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public BrowseNoteAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BrowseCheckBoxAdapter.CheckBoxViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View noteItemView = inflater.inflate(R.layout.note_item, parent, false);
+        View checkBoxItemView = inflater.inflate(R.layout.checkbox_item, parent, false);
 
         // Return a new holder instance
-        BrowseNoteAdapter.NoteViewHolder viewHolder = new BrowseNoteAdapter.NoteViewHolder(noteItemView);
+        BrowseCheckBoxAdapter.CheckBoxViewHolder viewHolder = new BrowseCheckBoxAdapter.CheckBoxViewHolder(checkBoxItemView);
         return viewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(NoteViewHolder holder, int position) {
+    public void onBindViewHolder(BrowseCheckBoxAdapter.CheckBoxViewHolder holder, int position) {
         // - get element from your dataset at this position
-        NoteItem item = (NoteItem)items.get(position);
+        CheckBoxItem item = (CheckBoxItem)items.get(position);
 
         // - replace the contents of the view with that element
-        TextView titleView = holder.titleTextView;
-        titleView.setText(item.getTitle());
-
-        TextView bodyView = holder.bodyTextView;
-        bodyView.setText(item.body);
+        CheckedTextView checkBoxView = holder.checkBoxView;
+        checkBoxView.setChecked(item.isComplete());
+        checkBoxView.setText(item.getTitle());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

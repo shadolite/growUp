@@ -11,18 +11,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import androidx.viewpager.widget.PagerAdapter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
+import com.cs246.growup.Adapters.BrowseCheckBoxAdapter;
+import com.cs246.growup.Adapters.BrowseEventAdapter;
+import com.cs246.growup.Adapters.BrowseNoteAdapter;
 import com.cs246.growup.Models.Config;
-import com.cs246.growup.Models.Item;
 import com.cs246.growup.Models.User;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
@@ -34,9 +27,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Listener {
     ActivityMainBinding bind;
@@ -116,14 +107,10 @@ public class MainActivity extends AppCompatActivity implements Listener {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab){
-
-            }
+            public void onTabUnselected(TabLayout.Tab tab){ }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) { }
         });
     }
 

@@ -1,4 +1,4 @@
-package com.cs246.growup.Views;
+package com.cs246.growup.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
