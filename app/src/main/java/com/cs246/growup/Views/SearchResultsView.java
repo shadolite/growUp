@@ -112,8 +112,8 @@ public class SearchResultsView extends AppCompatActivity {
 
 
             List<String> filterOptions = new ArrayList<String>();
-            filterOptions.add("All Volumes");
-            filterOptions.addAll(searchResultsPresenter.getVolumeTitles());
+            filterOptions.add("All Goals");
+
             spFilter.setAdapter(new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, filterOptions));
 
 
