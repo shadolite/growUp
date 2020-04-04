@@ -113,7 +113,7 @@ public class SearchResultsView extends AppCompatActivity {
 
             List<String> filterOptions = new ArrayList<String>();
             filterOptions.add("All Goals");
-
+            filterOptions.addAll(searchResultsPresenter.getEntryTitles());
             spFilter.setAdapter(new ArrayAdapter<String>(Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_item, filterOptions));
 
 
