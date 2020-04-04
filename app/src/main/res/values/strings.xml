@@ -23,6 +23,9 @@
     <string name="entry_note">Note</string>
     <string name="today">today</string>
     <string name="dateToday">today</string>
+    <string name="event_title">Events</string>
+    <string name="todo_title">To Do</string>
+    <string name="notes_title">Notes</string>
     <string name="menu_search">Search</string>
     <string name="menu_browse">Browse</string>
     <string name="menu_settings">Settings</string>

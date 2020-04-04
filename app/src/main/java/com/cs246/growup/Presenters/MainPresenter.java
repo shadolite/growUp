@@ -44,9 +44,8 @@ public class MainPresenter {
 
     public void initialize() {
         config = Config.readConfig(context);
-        /*LoadUserTask loadUserTask = new LoadUserTask(this);
-        loadUserTask.execute();*/
-        loadUser();
+        LoadUserTask loadUserTask = new LoadUserTask(this);
+        loadUserTask.execute();
     }
 
     public void registerListeners(Listener listener){
@@ -93,7 +92,13 @@ public class MainPresenter {
     }
 
     public void selectEntry(){
+
         Entry entry = user.getEntry(selectedDate);
+
+        selectedNoteItems.clear();
+        selectedCheckBoxItems.clear();
+        selectedNoteItems.clear();
+
         for (Item item :
                 entry.items) {
             if (item instanceof EventItem) {

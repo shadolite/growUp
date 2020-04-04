@@ -1,5 +1,11 @@
 package com.cs246.growup.Views;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -23,6 +29,7 @@ import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -35,12 +42,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
     ActivityMainBinding bind;
     boolean isRotated = false;
     private MainPresenter presenter;
-    private BrowseEntryFragment browseEntryFragment;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private ViewPager viewPager;
-    private PagerAdapter adapter;
+    private RecyclerView.Adapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         String strDate = dateFormat.format(entryDate);
 
         theDate.setText(strDate);
-        //setContentView(R.layout.activity_main);
+
         presenter = new MainPresenter(this);
         presenter.initialize();
         presenter.setSelectedDate(entryDate);
@@ -101,6 +103,28 @@ public class MainActivity extends AppCompatActivity implements Listener {
 
         setBottomNavigationListener();
         setSearchListener();
+
+        setTabLayoutListeners();
+    }
+
+    private void setTabLayoutListeners() {
+        TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+            @Override
+            public void onTabSelected(TabLayout.Tab tab){
+                loadRecyclerView();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab){
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     private void setSearchListener() {
@@ -114,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
 
-                loadFragment(item.getItemId());
+                //loadFragment(item.getItemId());
                 return true;
             }
         };
@@ -126,79 +150,33 @@ public class MainActivity extends AppCompatActivity implements Listener {
         presenter.registerListeners(fragment);
     }
 
-  /*  public void loadFragment(int fragmentID){
-
-        switch (fragmentID) {
-            case 0:
-        }
-    }*/
-
     public void onClick(MenuItem item) {
         Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
         startActivity(intent);
     }
 
-
-
-    private void loadFragment(int menuId) {
-        ActionBar actionBar = getSupportActionBar();
-
-        switch (menuId) {
-            case R.id.menu_browse :
-                viewPager.setCurrentItem(0);
-                actionBar.setTitle("Browse Events");
-                break;
-            case R.id.menu_search :
-                viewPager.setCurrentItem(1);
-                actionBar.setTitle("Search");
-                break;
-            case R.id.menu_settings :
-                viewPager.setCurrentItem(2);
-                actionBar.setTitle("Settings");
-                break;
-        }
-    }
-    public void loadEvents(SearchResultsView record) {
-        loadFragment(R.id.menu_browse);
-
-    }
-
     @Override
     public void notifyDataReady(User user, Config config) {
+        loadRecyclerView();
+    }
 
-        /*recyclerView = (RecyclerView) findViewById(R.id.searchList);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new BrowseNoteAdapter(presenter.getSelectedNoteItems());
-
-        // specify an adapter
-        switch(((TabLayout)findViewById(R.id.tabLayout)).getSelectedTabPosition()){
-            case 0:
-                mAdapter = new BrowseEventAdapter(presenter.getSelectedEventItems());
-                break;
-            case 1:
-                mAdapter = new BrowseCheckBoxAdapter(presenter.getSelectedCheckBoxItems());
-                break;
-            case 2:
-                mAdapter = new BrowseNoteAdapter(presenter.getSelectedNoteItems());
-        }
-
-        recyclerView.setAdapter(mAdapter);*/
-
+    private void loadRecyclerView() {
         RecyclerView itemRecyclerView = (RecyclerView) findViewById(R.id.searchList);
 
-        // Initialize contacts
-        List<Item> selectedNoteItems = presenter.getSelectedNoteItems();
         // Create adapter passing in the sample user data
-        BrowseNoteAdapter adapter = new BrowseNoteAdapter(selectedNoteItems);
+        switch(((TabLayout)findViewById(R.id.tabLayout)).getSelectedTabPosition()){
+            case 0:
+                recyclerViewAdapter = new BrowseEventAdapter(presenter.getSelectedEventItems());
+                break;
+            case 1:
+                recyclerViewAdapter = new BrowseCheckBoxAdapter(presenter.getSelectedCheckBoxItems());
+                break;
+            case 2:
+                recyclerViewAdapter = new BrowseNoteAdapter(presenter.getSelectedNoteItems());
+        }
+
         // Attach the adapter to the recyclerview to populate items
-        itemRecyclerView.setAdapter(adapter);
+        itemRecyclerView.setAdapter(recyclerViewAdapter);
         // Set layout manager to position the items
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

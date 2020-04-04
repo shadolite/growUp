@@ -9,13 +9,13 @@
     >
 
     <TextView
-        android:id="@+id/noteTitleTextView"
+        android:id="@+id/eventPeriodTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/bodyTextView"
+        android:id="@+id/eventTitleTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1" />

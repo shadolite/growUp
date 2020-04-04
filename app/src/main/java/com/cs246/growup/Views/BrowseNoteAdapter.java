@@ -11,8 +11,7 @@ import com.cs246.growup.Models.NoteItem;
 import com.cs246.growup.R;
 import java.util.List;
 
-public class BrowseNoteAdapter extends
-        RecyclerView.Adapter<BrowseNoteAdapter.NoteViewHolder> {
+public class BrowseNoteAdapter extends RecyclerView.Adapter<BrowseNoteAdapter.NoteViewHolder> {
 
     private List<Item> items;
 
@@ -32,14 +31,14 @@ public class BrowseNoteAdapter extends
         public NoteViewHolder(View noteItemView) {
             super(noteItemView);
 
-            titleTextView = noteItemView.findViewById(R.id.titleTextView);
+            titleTextView = noteItemView.findViewById(R.id.noteTitleTextView);
             bodyTextView = noteItemView.findViewById(R.id.bodyTextView);
         }
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BrowseNoteAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
@@ -47,7 +46,7 @@ public class BrowseNoteAdapter extends
         View noteItemView = inflater.inflate(R.layout.note_item, parent, false);
 
         // Return a new holder instance
-        NoteViewHolder viewHolder = new NoteViewHolder(noteItemView);
+        BrowseNoteAdapter.NoteViewHolder viewHolder = new BrowseNoteAdapter.NoteViewHolder(noteItemView);
         return viewHolder;
     }
 
@@ -61,7 +60,7 @@ public class BrowseNoteAdapter extends
         TextView titleView = holder.titleTextView;
         titleView.setText(item.getTitle());
 
-        TextView bodyView = holder.titleTextView;
+        TextView bodyView = holder.bodyTextView;
         bodyView.setText(item.body);
     }
 
