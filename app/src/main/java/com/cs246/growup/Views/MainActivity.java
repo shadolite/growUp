@@ -1,16 +1,19 @@
 package com.cs246.growup.Views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import androidx.viewpager.widget.PagerAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Item;
@@ -20,13 +23,12 @@ import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Listener {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements Listener {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ViewPager viewPager;
+    private PagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
+
                 loadFragment(item.getItemId());
                 return true;
             }
@@ -121,16 +126,41 @@ public class MainActivity extends AppCompatActivity implements Listener {
         presenter.registerListeners(fragment);
     }
 
-    public void loadFragment(int fragmentID){
+  /*  public void loadFragment(int fragmentID){
 
         switch (fragmentID) {
             case 0:
         }
-    }
+    }*/
 
     public void onClick(MenuItem item) {
         Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
         startActivity(intent);
+    }
+
+
+
+    private void loadFragment(int menuId) {
+        ActionBar actionBar = getSupportActionBar();
+
+        switch (menuId) {
+            case R.id.menu_browse :
+                viewPager.setCurrentItem(0);
+                actionBar.setTitle("Browse Events");
+                break;
+            case R.id.menu_search :
+                viewPager.setCurrentItem(1);
+                actionBar.setTitle("Search");
+                break;
+            case R.id.menu_settings :
+                viewPager.setCurrentItem(2);
+                actionBar.setTitle("Settings");
+                break;
+        }
+    }
+    public void loadEvents(SearchResultsView record) {
+        loadFragment(R.id.menu_browse);
+
     }
 
     @Override

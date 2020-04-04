@@ -6,6 +6,31 @@
         android:icon="@drawable/ic_settings_app"
         android:title="@string/menu_action_settings" />
     <item
+        android:id="@+id/menu_browse"
+        android:title="@string/menu_browse"
+        android:icon="@drawable/browse"
+        android:enabled="true"
+        app:showAsAction="always"
+        app:labelVisibilityMode="labeled"
+        />
+    <item
+        android:id="@+id/menu_search"
+        android:title="@string/menu_search"
+        android:icon="@drawable/search"
+        android:enabled="true"
+        app:showAsAction="always"
+        app:labelVisibilityMode="labeled"
+        />
+    <item
+        android:id="@+id/menu_settings"
+        android:title="@string/menu_settings"
+        android:icon="@drawable/settings"
+        android:enabled="true"
+        app:showAsAction="always"
+        app:labelVisibilityMode="labeled"
+        />
+
+    <item
         android:id="@+id/app_bar_search"
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/menu_action_search"

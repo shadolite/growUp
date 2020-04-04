@@ -23,4 +23,7 @@
     <string name="entry_note">Note</string>
     <string name="today">today</string>
     <string name="dateToday">today</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_browse">Browse</string>
+    <string name="menu_settings">Settings</string>
 </resources>
