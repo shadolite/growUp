@@ -31,10 +31,14 @@ public class Entry {
     public void remove(Item item) {
         items.remove(item);
     }
-    public String getEntry() {
+    public String getEntry(Entry goal) {
         return title;
     }
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getClass(SearchData record) {
+        return title;
     }
 }

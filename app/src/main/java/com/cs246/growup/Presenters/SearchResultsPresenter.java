@@ -17,6 +17,8 @@ public class SearchResultsPresenter {
     private static SearchResult searchResults;
     private String prevVolumeFilter;
     private String prevTerm;
+    private String entry;
+    private Goal goal;
 
     public SearchResultsPresenter() {
         searchResults = new SearchResult();
@@ -40,8 +42,8 @@ public class SearchResultsPresenter {
         }
         if (prevTerm == null || term.length() < prevTerm.length() || prevVolumeFilter == null || !prevVolumeFilter.contentEquals(volumeFilter)) {
             searchResults.clear();
-            for (Entry entry : library.getEntry()) {
-                if (!volumeFilter.contentEquals("") && !volumeFilter.contentEquals(entry.getEntry()))
+            for (Entry entry : library.getEntry(entry)) {
+                if (!volumeFilter.contentEquals("") && !volumeFilter.contentEquals(entry.getEntry(entry)))
                     continue;
                 /*for (Goal goal : entry.getGoals()) {
                     searchResults.add(entry, goal);
@@ -70,8 +72,8 @@ public class SearchResultsPresenter {
         return searchResults;
     }
 
-    public List<String> getVolumeTitles() {
-        return library.getVolumeTitles();
+    public List<String> getEntryTitles() {
+        return library.getEntryTitles();
     }
 
 }

@@ -61,23 +61,23 @@ public class Library {
         }
     }
 
-    public List<Entry> getEntry() {
+    public List<Entry> getEntry(String entry) {
         return entries;
     }
 
     public Entry getVolume(String title) {
         for (Entry entry : entries) {
-            if (entry.getEntry().toUpperCase().equals(title.toUpperCase())) {
+            if (entry.getEntry(entry).toUpperCase().equals(title.toUpperCase())) {
                 return entry;
             }
         }
         return null;
     }
 
-    public List<String> getVolumeTitles() {
+    public List<String> getEntryTitles() {
         List<String> titles = new ArrayList<String>();
         for (Entry entry : entries) {
-            titles.add(entry.getEntry());
+            titles.add(entry.getEntry(entry));
         }
         return titles;
     }
