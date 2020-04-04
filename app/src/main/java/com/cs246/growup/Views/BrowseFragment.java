@@ -15,7 +15,6 @@ import com.cs246.growup.Models.Library;
 import com.cs246.growup.Models.SearchData;
 import com.cs246.growup.Presenters.BrowsePresenter;
 import com.cs246.growup.Presenters.Listener;
-import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 
 public class BrowseFragment extends Fragment /*implements MainPresenter*/ {

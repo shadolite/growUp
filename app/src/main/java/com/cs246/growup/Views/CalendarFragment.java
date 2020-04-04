@@ -1,18 +1,12 @@
 package com.cs246.growup.Views;
 
-import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
-import android.widget.CalendarView;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.User;
-import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.Presenters.Listener;
-import com.cs246.growup.R;
 
 
 public class CalendarFragment extends AppCompatActivity implements Listener {

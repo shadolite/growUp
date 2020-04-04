@@ -69,4 +69,8 @@ public class User {
 
         return new Entry();
     }
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
 }

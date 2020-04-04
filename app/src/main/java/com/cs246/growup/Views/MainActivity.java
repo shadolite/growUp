@@ -137,9 +137,14 @@ public class MainActivity extends AppCompatActivity implements Listener {
         presenter.registerListeners(fragment);
     }
 
-    public void onClick(MenuItem item) {
-        Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
-        startActivity(intent);
+    public void calendar_OnClick(MenuItem item) {
+        Intent calendarIntent = new Intent(MainActivity.this, CalendarActivity.class);
+        startActivity(calendarIntent);
+    }
+
+    public void goals_OnClick(MenuItem item) {
+        Intent goalsIntent = new Intent(MainActivity.this, BrowseGoalsView.class);
+        startActivity(goalsIntent);
     }
 
     @Override

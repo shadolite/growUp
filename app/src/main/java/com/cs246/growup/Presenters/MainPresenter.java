@@ -6,9 +6,7 @@ import com.cs246.growup.Models.CheckBoxItem;
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Entry;
 import com.cs246.growup.Models.EventItem;
-import com.cs246.growup.Models.Goal;
 import com.cs246.growup.Models.Item;
-import com.cs246.growup.Models.Storage;
 import com.cs246.growup.Models.User;
 import com.cs246.growup.Views.MainActivity;
 
