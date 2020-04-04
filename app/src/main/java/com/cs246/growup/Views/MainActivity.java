@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
                 startActivity(intentEntry);
             }
         });
+
         TextView theDate = (TextView) findViewById(R.id.currentDate);
 
         Date entryDate = Calendar.getInstance().getTime(); //cal.getTime();
@@ -113,6 +116,15 @@ public class MainActivity extends AppCompatActivity implements Listener {
             public void onTabReselected(TabLayout.Tab tab) { }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+
 
     private void setSearchListener() {
 

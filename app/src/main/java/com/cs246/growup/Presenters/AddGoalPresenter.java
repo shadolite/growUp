@@ -6,6 +6,10 @@ public class AddGoalPresenter {
 
     public Goal goal;
 
+    public Goal getGoal(){
+        return goal;
+    }
+
     public void setTags(){
 
     }
