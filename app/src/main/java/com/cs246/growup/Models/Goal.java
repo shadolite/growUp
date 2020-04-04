@@ -12,11 +12,19 @@ public class Goal {
     public List <Entry> entries;
     public List <Item> items;
     public List <Tag> tags;
-    //public GregorianCalendar dueDate;
     @SerializedName(value="goal", alternate = {"title"})
     private String title;
     private String description;
     private Date dueDate;
+    private boolean IsComplete;
+
+    public boolean isComplete() {
+        return IsComplete;
+    }
+
+    public void setComplete(boolean complete) {
+        IsComplete = complete;
+    }
 
     public Goal() {
         entries = new ArrayList<Entry>();

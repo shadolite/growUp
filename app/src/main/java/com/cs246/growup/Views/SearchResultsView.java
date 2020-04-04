@@ -1,7 +1,6 @@
 package com.cs246.growup.Views;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Library;
 import com.cs246.growup.Models.SearchData;
-import com.cs246.growup.Models.SearchResult;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.SearchPresenter;
 import com.cs246.growup.Presenters.SearchResultsPresenter;
