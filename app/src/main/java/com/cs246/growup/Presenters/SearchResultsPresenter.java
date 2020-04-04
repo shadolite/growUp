@@ -50,6 +50,7 @@ public class SearchResultsPresenter {
                 }*/
             }
         }
+
         else {
             List<SearchData> updateList = new ArrayList<>();
             for (SearchData record : searchResults.getData()) {
