@@ -22,7 +22,9 @@ public class UserTest {
         testGoal.setTitle("Test Goal Title");
         testGoal.setDescription("This is a test goal.");
 
-        Calendar cal = new GregorianCalendar();
+        Calendar.getInstance().setTime(new Date());
+
+        Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         cal.add(Calendar.WEEK_OF_MONTH, 1);
         testGoal.setDueDate(cal.getTime());
@@ -58,7 +60,7 @@ public class UserTest {
 
         testEventItem.setStartTime(Calendar.getInstance().getTime());
 
-        Calendar cal = new GregorianCalendar();
+        Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         cal.add(Calendar.HOUR_OF_DAY, 1);
         Date endDate = cal.getTime();

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,9 +55,14 @@ public class User {
     }
 
     public Entry getEntry(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        String strDate = dateFormat.format(date);
+
         for (Entry entry : entries
                 ) {
-            if (entry.entryDate == date){
+            String d2 = dateFormat.format(entry.entryDate);
+            if (strDate.contains(d2)){
                 return entry;
             }
         }

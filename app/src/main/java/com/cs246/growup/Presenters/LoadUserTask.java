@@ -13,6 +13,7 @@ public class LoadUserTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         presenter.get().loadUser();
+        presenter.get().selectEntry();
         return null;
     }
 

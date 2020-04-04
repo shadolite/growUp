@@ -3,9 +3,6 @@ package com.cs246.growup.Views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,21 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.cs246.growup.Models.SearchData;
 import com.cs246.growup.Models.Config;
+import com.cs246.growup.Models.Item;
 import com.cs246.growup.Models.User;
-import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Listener {
     ActivityMainBinding bind;
@@ -85,8 +83,6 @@ public class MainActivity extends AppCompatActivity implements Listener {
         });
         TextView theDate = (TextView) findViewById(R.id.currentDate);
 
-        Calendar cal = new GregorianCalendar();
-        cal.setTime(new Date());
         Date entryDate = Calendar.getInstance().getTime(); //cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
 
@@ -94,16 +90,13 @@ public class MainActivity extends AppCompatActivity implements Listener {
 
         theDate.setText(strDate);
         //setContentView(R.layout.activity_main);
-
-        /*browseEntryFragment = new BrowseEntryFragment();
         presenter = new MainPresenter(this);
         presenter.initialize();
+        presenter.setSelectedDate(entryDate);
+        presenter.selectEntry();
 
-
-
-        registerFragment(browseEntryFragment);
         setBottomNavigationListener();
-        setSearchListener();*/
+        setSearchListener();
     }
 
     private void setSearchListener() {
@@ -142,11 +135,8 @@ public class MainActivity extends AppCompatActivity implements Listener {
 
     @Override
     public void notifyDataReady(User user, Config config) {
-        /*TabLayout t = (TabLayout)findViewById(R.id.tabLayout);
-        loadFragment(t.getSelectedTabPosition());
-        loadFragment(0);*/
 
-        recyclerView = (RecyclerView) findViewById(R.id.searchList);
+        /*recyclerView = (RecyclerView) findViewById(R.id.searchList);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -155,14 +145,40 @@ public class MainActivity extends AppCompatActivity implements Listener {
         // use a linear layout manager
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new BrowseNoteAdapter(presenter.getSelectedNoteItems());
 
-        // specify an adapter (see also next example)
-        mAdapter = new BrowseAdapter(browseEntryFragment.getSelectedEventItems());
-        recyclerView.setAdapter(mAdapter);
+        // specify an adapter
+        switch(((TabLayout)findViewById(R.id.tabLayout)).getSelectedTabPosition()){
+            case 0:
+                mAdapter = new BrowseEventAdapter(presenter.getSelectedEventItems());
+                break;
+            case 1:
+                mAdapter = new BrowseCheckBoxAdapter(presenter.getSelectedCheckBoxItems());
+                break;
+            case 2:
+                mAdapter = new BrowseNoteAdapter(presenter.getSelectedNoteItems());
+        }
+
+        recyclerView.setAdapter(mAdapter);*/
+
+        RecyclerView itemRecyclerView = (RecyclerView) findViewById(R.id.searchList);
+
+        // Initialize contacts
+        List<Item> selectedNoteItems = presenter.getSelectedNoteItems();
+        // Create adapter passing in the sample user data
+        BrowseNoteAdapter adapter = new BrowseNoteAdapter(selectedNoteItems);
+        // Attach the adapter to the recyclerview to populate items
+        itemRecyclerView.setAdapter(adapter);
+        // Set layout manager to position the items
+        itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
     public void notifyConfigChanged() {
 
+    }
+
+    public void jumpToDate(Date date){
+        presenter.setSelectedDate(date);
     }
 }
