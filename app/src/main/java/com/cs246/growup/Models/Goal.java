@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class Goal implements Serializable {
         items = new ArrayList<Item>();
         tags = new ArrayList<Tag>();
         isComplete = false;
+        dueDate = Calendar.getInstance().getTime();
     }
 
     public String getTitle() {
