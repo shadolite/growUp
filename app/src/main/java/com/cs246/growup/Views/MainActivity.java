@@ -21,6 +21,8 @@ import com.cs246.growup.Adapters.BrowseCheckBoxAdapter;
 import com.cs246.growup.Adapters.BrowseEventAdapter;
 import com.cs246.growup.Adapters.BrowseNoteAdapter;
 import com.cs246.growup.Models.Config;
+import com.cs246.growup.Models.SearchData;
+import com.cs246.growup.Models.SearchResult;
 import com.cs246.growup.Models.User;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
@@ -41,13 +43,15 @@ public class MainActivity extends AppCompatActivity implements Listener {
     boolean isRotated = false;
     private MainPresenter presenter;
     private RecyclerView.Adapter recyclerViewAdapter;
-    private CollectionPagerAdapter adapter;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        adapter = new CollectionPagerAdapter(getSupportFragmentManager());
+
         bind.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,51 +132,61 @@ public class MainActivity extends AppCompatActivity implements Listener {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+        class CollectionPagerAdapter extends FragmentPagerAdapter {
+
+            public Fragment getFragment(int i) {
+                return fragments.get(i);
+            }
+
+            private Map<Integer, Fragment> fragments;
+
+            public CollectionPagerAdapter(FragmentManager fm) {
+                super(fm);
+                fragments = new HashMap<>();
+            }
+
+            @Override
+            public Fragment getItem(int i) {
+                Fragment fragment;
+
+                switch(i) {
+                    case 0:
+                        fragment = new BrowseFragment();
+                        fragments.put(i, fragment);
+                        break;
+                    case 1:
+                        fragment = new SearchResultsView.SearchFragment();
+                        fragments.put(i, fragment);
+                        break;
+                    case 2:
+                        fragment = new SettingsFragment();
+                        fragments.put(i, fragment);
+                        break;
+
+                    default:
+                        fragment = null;
+                }
+                return fragment;
+            }
+
+            public void loadGoals(SearchData record) {
+
+                getFragment(R.id.menu_browse);
+
+            }
+
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+
+
+        }
         return true;
     }
-    private class CollectionPagerAdapter extends FragmentPagerAdapter {
 
-        private Map<Integer, Fragment> fragments;
-
-        public CollectionPagerAdapter(FragmentManager fm) {
-            super(fm);
-            fragments = new HashMap<>();
-        }
-
-        @Override
-        public Fragment getItem(int i) {
-            Fragment fragment;
-
-            switch(i) {
-                case 0:
-                    fragment = new BrowseFragment();
-                    fragments.put(i, fragment);
-                    break;
-                case 1:
-                    fragment = new SearchResultsView.SearchFragment();
-                    fragments.put(i, fragment);
-                    break;
-                case 2:
-                    fragment = new SettingsFragment();
-                    fragments.put(i, fragment);
-                    break;
-
-                default:
-                    fragment = null;
-            }
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-        public Fragment getFragment(int i) {
-            return fragments.get(i);
-        }
-
-    }
 
 
 
