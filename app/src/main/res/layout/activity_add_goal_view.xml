@@ -1,114 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Views.AddGoalView">
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Views.AddGoalView">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/goalTitleLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintBottom_toTopOf="@+id/goalDescriptionLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/goalTitle"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/goalTitleLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/add_goal_title_hint" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:layout_constraintBottom_toTopOf="@+id/goalDescriptionLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/goalDescriptionLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/spiritual_tag"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalTitleLayout">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/goalTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_goal_title_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/goalDescription"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/goalDescriptionLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/add_goal_description_hint"
-            android:inputType="textMultiLine" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/spiritual_tag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goalTitleLayout">
 
-    <ToggleButton
-        android:id="@+id/spiritual_tag"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/togglebutton_spiritual_selector"
-        android:text="@string/spiritual_tag"
-        android:textColor="@drawable/togglebutton_spiritual_text"
-        android:textOff="@string/spiritual_tag"
-        android:textOn="@string/spiritual_tag"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/social_tag"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/goalDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_goal_description_hint"
+                android:inputType="textMultiLine" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <ToggleButton
-        android:id="@+id/social_tag"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/togglebutton_social_selector"
-        android:text="@string/social_tag"
-        android:textColor="@drawable/togglebutton_social_text"
-        android:textOff="@string/social_tag"
-        android:textOn="@string/social_tag"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/intellectual_tag"
-        app:layout_constraintStart_toEndOf="@+id/spiritual_tag"
-        app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
+        <ToggleButton
+            android:id="@+id/spiritual_tag"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/togglebutton_spiritual_selector"
+            android:text="@string/spiritual_tag"
+            android:textColor="@drawable/togglebutton_spiritual_text"
+            android:textOff="@string/spiritual_tag"
+            android:textOn="@string/spiritual_tag"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/social_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
 
-    <ToggleButton
-        android:id="@+id/intellectual_tag"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
-        android:background="@drawable/togglebutton_intellectual_selector"
-        android:text="@string/intellectual_tag"
-        android:textColor="@drawable/togglebutton_intellectual_text"
-        android:textOff="@string/intellectual_tag"
-        android:textOn="@string/intellectual_tag"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/physical_tag"
-        app:layout_constraintStart_toEndOf="@+id/social_tag"
-        app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
+        <ToggleButton
+            android:id="@+id/social_tag"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/togglebutton_social_selector"
+            android:text="@string/social_tag"
+            android:textColor="@drawable/togglebutton_social_text"
+            android:textOff="@string/social_tag"
+            android:textOn="@string/social_tag"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/intellectual_tag"
+            app:layout_constraintStart_toEndOf="@+id/spiritual_tag"
+            app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
 
-    <ToggleButton
-        android:id="@+id/physical_tag"
-        android:layout_width="0dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/togglebutton_physical_selector"
-        android:text="@string/physical_tag"
-        android:textColor="@drawable/togglebutton_physical_text"
-        android:textOff="@string/physical_tag"
-        android:textOn="@string/physical_tag"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/intellectual_tag"
-        app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ToggleButton
+            android:id="@+id/intellectual_tag"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/togglebutton_intellectual_selector"
+            android:text="@string/intellectual_tag"
+            android:textColor="@drawable/togglebutton_intellectual_text"
+            android:textOff="@string/intellectual_tag"
+            android:textOn="@string/intellectual_tag"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/physical_tag"
+            app:layout_constraintStart_toEndOf="@+id/social_tag"
+            app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
+
+        <ToggleButton
+            android:id="@+id/physical_tag"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/togglebutton_physical_selector"
+            android:text="@string/physical_tag"
+            android:textColor="@drawable/togglebutton_physical_text"
+            android:textOff="@string/physical_tag"
+            android:textOn="@string/physical_tag"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/intellectual_tag"
+            app:layout_constraintTop_toBottomOf="@+id/goalDescriptionLayout" />
+
+        <ImageButton
+            android:id="@+id/goalDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spiritual_tag"
+            app:layout_constraintVertical_bias="0.100000024"
+            app:srcCompat="@drawable/ic_action_delete" />
+
+        <ImageButton
+            android:id="@+id/goalSaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/physical_tag"
+            app:layout_constraintVertical_bias="0.100000024"
+            app:srcCompat="@drawable/ic_check_accent_color_24dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -6,9 +6,11 @@
     <item
         android:id="@+id/calendar"
         android:icon="@drawable/ic_action_calendar"
-        android:onClick="onClick"
+        android:onClick="calendar_OnClick"
         android:title="@string/menu_action_calendar" />
-    <item android:id="@+id/goal"
+    <item
+        android:id="@+id/goal"
         android:icon="@drawable/ic_goal"
+        android:onClick="goals_OnClick"
         android:title="@string/menu_action_goal" />
 </menu>

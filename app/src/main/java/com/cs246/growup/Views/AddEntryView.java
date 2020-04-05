@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cs246.growup.R;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 public class AddEntryView extends AppCompatActivity {
 
@@ -14,6 +16,14 @@ public class AddEntryView extends AppCompatActivity {
         setContentView(R.layout.activity_add_entry_view);
 //        textview.setMovementMethod(new ScrollingMovementMethod());
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
 
     @Override
     public void onStop() {
