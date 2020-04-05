@@ -136,4 +136,7 @@ public class MainPresenter {
     }
 
 
+    public Date getSelectedDate() {
+        return selectedDate;
+    }
 }

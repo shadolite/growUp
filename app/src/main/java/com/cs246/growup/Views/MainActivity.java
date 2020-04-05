@@ -93,14 +93,10 @@ public class MainActivity extends AppCompatActivity implements Listener {
             }
         });
 
-        TextView theDate = (TextView) findViewById(R.id.currentDate);
+
 
         Date entryDate = Calendar.getInstance().getTime(); //cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
-
-        String strDate = dateFormat.format(entryDate);
-
-        theDate.setText(strDate);
+        setDateText(entryDate);
 
         presenter = new MainPresenter(this);
         presenter.initialize();
@@ -113,6 +109,15 @@ public class MainActivity extends AppCompatActivity implements Listener {
         setTabLayoutListeners();
     }
 
+    private void setDateText(Date entryDate) {
+        TextView theDate = (TextView) findViewById(R.id.currentDate);
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        String strDate = dateFormat.format(entryDate);
+
+        theDate.setText(strDate);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -120,6 +125,20 @@ public class MainActivity extends AppCompatActivity implements Listener {
             Goal goal = (Goal) intent.getSerializableExtra("Goal");
             presenter.getUser().addGoal(goal);
         }
+
+        if (requestCode == 123 && resultCode == RESULT_OK) {
+            int year = (int)intent.getIntExtra("year", 0);
+            int month = (int)intent.getIntExtra("month", 0);
+            int dayOfMonth = (int)intent.getIntExtra("dayOfMonth", 0);
+            Calendar c = Calendar.getInstance();
+            c.set(year, month, dayOfMonth, 0, 0);
+            Date date = c.getTime();
+            presenter.setSelectedDate(date);
+
+
+        }
+
+
     }
 
     private void setTabLayoutListeners() {
@@ -193,8 +212,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
     }
 
     public void calendar_OnClick(MenuItem item) {
-        Intent calendarIntent = new Intent(MainActivity.this, CalendarActivity.class);
-        startActivity(calendarIntent);
+        startActivityForResult(new Intent(getApplicationContext(), CalendarActivity.class), 123);
     }
 
     public void goals_OnClick(MenuItem item) {
@@ -206,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
     @Override
     public void notifyDataReady(User user, Config config) {
         loadRecyclerView();
+        setDateText(presenter.getSelectedDate());
     }
 
     private void loadRecyclerView() {

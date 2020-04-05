@@ -1,5 +1,6 @@
 package com.cs246.growup.Views;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.R;
@@ -24,12 +26,12 @@ public class CalendarActivity extends AppCompatActivity {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView CalendarView, int year, int month, int dayOfMonth) {
-                String date = year + "/" + month + "/" + dayOfMonth;
-                Log.d(TAG, "onSelectedDayChange: yyyy/mm/dd:" + date);
-                Intent intent = new Intent(CalendarActivity.this, BrowseCalenderPresenter.class);
-                intent.putExtra("date", date);
-                startActivity(intent);
-
+                Intent intent = new Intent();
+                intent.putExtra("year", year);
+                intent.putExtra("month", month);
+                intent.putExtra("dayOfMonth", dayOfMonth);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
     }
