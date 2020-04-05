@@ -2,13 +2,14 @@ package com.cs246.growup.Models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Goal {
+public class Goal implements Serializable {
     public List <Entry> entries;
     public List <Item> items;
     public List <Tag> tags;
@@ -16,22 +17,21 @@ public class Goal {
     private String title;
     private String description;
     private Date dueDate;
-    private boolean IsComplete;
+    private boolean isComplete;
 
     public boolean isComplete() {
-        return IsComplete;
+        return isComplete;
     }
 
     public void setComplete(boolean complete) {
-        IsComplete = complete;
+        isComplete = complete;
     }
 
     public Goal() {
         entries = new ArrayList<Entry>();
         items = new ArrayList<Item>();
         tags = new ArrayList<Tag>();
-        //dueDate = new GregorianCalendar();
-
+        isComplete = false;
     }
 
     public String getTitle() {
@@ -57,14 +57,6 @@ public class Goal {
         this.dueDate = dueDate;
     }
 
-    //public GregorianCalendar getDueDate() {
-      //  return dueDate;
-    //}
-
-    //public void setDueDate(GregorianCalendar dueDate) {
-      //  this.dueDate = dueDate;
-    //}
-
     public void addEntry(Entry entry) {
         entries.add(entry);
     }
@@ -87,5 +79,11 @@ public class Goal {
 
     public void removeTag(Tag tag) {
         tags.remove(tag);
+    }
+
+    public String GetStringDueDate() {
+        DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
+
+        return dateFormat.format(dueDate);
     }
 }

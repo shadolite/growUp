@@ -4,13 +4,14 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private List<Goal> goals;
     private List<Entry> entries;
 

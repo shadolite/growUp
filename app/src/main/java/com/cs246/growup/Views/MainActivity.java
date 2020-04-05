@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
 
     public void goals_OnClick(MenuItem item) {
         Intent goalsIntent = new Intent(MainActivity.this, BrowseGoalsView.class);
+        goalsIntent.putExtra("User", presenter.getUser());
         startActivity(goalsIntent);
     }
 

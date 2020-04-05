@@ -19,7 +19,7 @@ public class BrowseGoalPresenter {
         browseGoalsActivity = browseGoalsView;
     }
 
-    public void Initialize(User user){
+    public void initialize(User user){
 
         loadCurrentGoals(user);
         loadCompletedGoals(user);
@@ -47,5 +47,13 @@ public class BrowseGoalPresenter {
                 currentGoals.add(goal);
             }
         }
+    }
+
+    public List<Goal> getCurrentGoals() {
+        return currentGoals;
+    }
+
+    public List<Goal> getCompletedGoals() {
+        return completedGoals;
     }
 }

@@ -1,15 +1,15 @@
 package com.cs246.growup.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-public class Entry {
+public class Entry implements Serializable {
     public List <Item> items;
     public Date entryDate;
-    //public GregorianCalendar entryDate;
     private String title;
 
     public Entry() {

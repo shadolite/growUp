@@ -7,7 +7,7 @@
     tools:context=".Views.BrowseGoalsView">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/goalsTabLayout"
         android:layout_width="0dp"
         android:layout_height="54dp"
         app:layout_constraintBottom_toTopOf="@+id/goalList"
@@ -36,6 +36,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/goalsTabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
