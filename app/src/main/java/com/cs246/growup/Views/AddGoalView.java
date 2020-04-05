@@ -61,7 +61,13 @@ public class AddGoalView extends AppCompatActivity {
         Intent addGoal = new Intent();
         EditText goalTitle = (EditText)bind.goalTitle;
         String title = goalTitle.getText().toString();
+        EditText goalDescription = (EditText)bind.goalDescription;
+        String description = goalDescription.getText().toString();
+        ToggleButton spiritualTag = bind.spiritualTag;
+        String spiritual = spiritualTag.getText().toString();
+//        presenter.goal.addTag(spiritual);
         presenter.goal.setTitle(title);
+        presenter.goal.setDescription(description);
         addGoal.putExtra("Goal", presenter.getGoal());
         setResult(RESULT_OK, addGoal);
         Toast.makeText(getBaseContext(), presenter.goal.getTitle(), Toast.LENGTH_SHORT).show();
