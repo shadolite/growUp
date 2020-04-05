@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
                 fragments = new HashMap<>();
             }
 
+
             @Override
             public Fragment getItem(int i) {
                 Fragment fragment;
