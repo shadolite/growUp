@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
     boolean isRotated = false;
     private MainPresenter presenter;
     private RecyclerView.Adapter recyclerViewAdapter;
-
+    private CollectionPagerAdapter adapter;
 
 
 
@@ -133,61 +133,61 @@ public class MainActivity extends AppCompatActivity implements Listener {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-        class CollectionPagerAdapter extends FragmentPagerAdapter {
 
-            public Fragment getFragment(int i) {
-                return fragments.get(i);
-            }
-
-            private Map<Integer, Fragment> fragments;
-
-            public CollectionPagerAdapter(FragmentManager fm) {
-                super(fm);
-                fragments = new HashMap<>();
-            }
-
-
-            @Override
-            public Fragment getItem(int i) {
-                Fragment fragment;
-
-                switch(i) {
-                    case 0:
-                        fragment = new BrowseFragment();
-                        fragments.put(i, fragment);
-                        break;
-                    case 1:
-                        fragment = new SearchResultsView.SearchFragment();
-                        fragments.put(i, fragment);
-                        break;
-                    case 2:
-                        fragment = new SettingsFragment();
-                        fragments.put(i, fragment);
-                        break;
-
-                    default:
-                        fragment = null;
-                }
-                return fragment;
-            }
-
-            public void loadGoals(SearchData record) {
-
-                getFragment(R.id.menu_browse);
-
-            }
-
-            @Override
-            public int getCount() {
-                return 3;
-            }
-
-
-
-        }
         return true;
     }
+    public class CollectionPagerAdapter extends FragmentPagerAdapter {
 
+        public Fragment getFragment(int i) {
+            return fragments.get(i);
+        }
+
+        private Map<Integer, Fragment> fragments;
+
+        public CollectionPagerAdapter(FragmentManager fm) {
+            super(fm);
+            fragments = new HashMap<>();
+        }
+
+
+        @Override
+        public Fragment getItem(int i) {
+            Fragment fragment;
+
+            switch(i) {
+                case 0:
+                    fragment = new BrowseFragment();
+                    fragments.put(i, fragment);
+                    break;
+                case 1:
+                    fragment = new SearchResultsView.SearchFragment();
+                    fragments.put(i, fragment);
+                    break;
+                case 2:
+                    fragment = new SettingsFragment();
+                    fragments.put(i, fragment);
+                    break;
+
+                default:
+                    fragment = null;
+            }
+            return fragment;
+        }
+
+        public void loadGoals(SearchData record) {
+
+            getFragment(R.id.menu_browse);
+
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+
+
+    }
 
 
 

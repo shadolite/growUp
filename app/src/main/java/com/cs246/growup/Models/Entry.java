@@ -11,6 +11,7 @@ public class Entry implements Serializable {
     public List <Item> items;
     public Date entryDate;
     private String title;
+    private Goal goal;
 
     public Entry() {
         items = new ArrayList<Item>();
@@ -22,6 +23,9 @@ public class Entry implements Serializable {
     public Entry(Date date) {
         items = new ArrayList<Item>();
         this.entryDate = date;
+    }
+    public List<Goal> getGoal() {
+        return (List<Goal>) goal;
     }
 
     public void add(Item item) {

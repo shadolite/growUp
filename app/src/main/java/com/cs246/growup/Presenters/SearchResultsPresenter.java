@@ -45,9 +45,9 @@ public class SearchResultsPresenter {
             for (Entry entry : library.getEntry(entry)) {
                 if (!volumeFilter.contentEquals("") && !volumeFilter.contentEquals(entry.getEntry(entry)))
                     continue;
-                /*for (Goal goal : entry.getGoals()) {
+                for (Goal goal : entry.getGoal()) {
                     searchResults.add(entry, goal);
-                }*/
+                }
             }
         }
 
