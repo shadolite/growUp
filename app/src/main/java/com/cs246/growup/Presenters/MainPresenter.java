@@ -7,6 +7,7 @@ import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Entry;
 import com.cs246.growup.Models.EventItem;
 import com.cs246.growup.Models.Item;
+import com.cs246.growup.Models.Library;
 import com.cs246.growup.Models.User;
 import com.cs246.growup.Views.MainActivity;
 
@@ -26,6 +27,8 @@ public class MainPresenter {
     private boolean userReady;
     private List<Listener> registeredListeners;
     private Context context;
+    private Library library;
+    private boolean libraryReady;
 
     public MainPresenter(MainActivity mainActivity) {
         config = new Config();
@@ -128,4 +131,9 @@ public class MainPresenter {
         selectedDate = date;
         selectEntry();
     }
+    public Library getLibrary() {
+        return library;
+    }
+
+
 }

@@ -3,6 +3,9 @@ package com.cs246.growup.Views;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,17 +33,21 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements Listener {
     ActivityMainBinding bind;
     boolean isRotated = false;
     private MainPresenter presenter;
     private RecyclerView.Adapter recyclerViewAdapter;
+    private CollectionPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        adapter = new CollectionPagerAdapter(getSupportFragmentManager());
         bind.floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +129,49 @@ public class MainActivity extends AppCompatActivity implements Listener {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
+    }
+    private class CollectionPagerAdapter extends FragmentPagerAdapter {
+
+        private Map<Integer, Fragment> fragments;
+
+        public CollectionPagerAdapter(FragmentManager fm) {
+            super(fm);
+            fragments = new HashMap<>();
+        }
+
+        @Override
+        public Fragment getItem(int i) {
+            Fragment fragment;
+
+            switch(i) {
+                case 0:
+                    fragment = new BrowseFragment();
+                    fragments.put(i, fragment);
+                    break;
+                case 1:
+                    fragment = new SearchResultsView.SearchFragment();
+                    fragments.put(i, fragment);
+                    break;
+                case 2:
+                    fragment = new SettingsFragment();
+                    fragments.put(i, fragment);
+                    break;
+
+                default:
+                    fragment = null;
+            }
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        public Fragment getFragment(int i) {
+            return fragments.get(i);
+        }
+
     }
 
 
