@@ -6,6 +6,10 @@ public class AddGoalPresenter {
 
     public Goal goal;
 
+    public AddGoalPresenter() {
+        this.goal = new Goal();
+    }
+
     public Goal getGoal(){
         return goal;
     }

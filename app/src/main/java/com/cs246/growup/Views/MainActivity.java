@@ -16,11 +16,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cs246.growup.Adapters.BrowseCheckBoxAdapter;
 import com.cs246.growup.Adapters.BrowseEventAdapter;
 import com.cs246.growup.Adapters.BrowseNoteAdapter;
 import com.cs246.growup.Models.Config;
+import com.cs246.growup.Models.Goal;
 import com.cs246.growup.Models.SearchData;
 import com.cs246.growup.Models.SearchResult;
 import com.cs246.growup.Models.User;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
     boolean isRotated = false;
     private MainPresenter presenter;
     private RecyclerView.Adapter recyclerViewAdapter;
-    private CollectionPagerAdapter adapter;
+
 
 
 
@@ -79,8 +81,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         bind.fabAddGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentGoal = new Intent(MainActivity.this, AddGoalView.class);
-                startActivity(intentGoal);
+                startActivityForResult(new Intent(getApplicationContext(), AddGoalView.class), 200);
             }
         });
         
@@ -112,6 +113,15 @@ public class MainActivity extends AppCompatActivity implements Listener {
         setTabLayoutListeners();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 200 && resultCode == RESULT_OK) {
+            Goal goal = (Goal) intent.getSerializableExtra("Goal");
+            presenter.getUser().addGoal(goal);
+        }
+    }
+
     private void setTabLayoutListeners() {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
@@ -132,62 +142,30 @@ public class MainActivity extends AppCompatActivity implements Listener {
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-
-
         return true;
     }
-    public class CollectionPagerAdapter extends FragmentPagerAdapter {
 
-        public Fragment getFragment(int i) {
-            return fragments.get(i);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Fragment fragment;
+
+        switch (item.getItemId()) {
+            case R.id.searchIcon:
+                Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
+                Intent intentSearch = new Intent(MainActivity.this, SearchResultsView.class);
+                startActivity(intentSearch);
+                break;
+
+            case R.id.dropdown_menu:
+                Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
+                break;
+
+            default:
+                break;
         }
-
-        private Map<Integer, Fragment> fragments;
-
-        public CollectionPagerAdapter(FragmentManager fm) {
-            super(fm);
-            fragments = new HashMap<>();
-        }
-
-
-        @Override
-        public Fragment getItem(int i) {
-            Fragment fragment;
-
-            switch(i) {
-                case 0:
-                    fragment = new BrowseFragment();
-                    fragments.put(i, fragment);
-                    break;
-                case 1:
-                    fragment = new SearchResultsView.SearchFragment();
-                    fragments.put(i, fragment);
-                    break;
-                case 2:
-                    fragment = new SettingsFragment();
-                    fragments.put(i, fragment);
-                    break;
-
-                default:
-                    fragment = null;
-            }
-            return fragment;
-        }
-
-        public void loadGoals(SearchData record) {
-
-            getFragment(R.id.menu_browse);
-
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
-
-
-
+        return true;
     }
+
 
 
 

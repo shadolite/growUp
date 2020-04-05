@@ -3,6 +3,7 @@ package com.cs246.growup.Views;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,7 +28,6 @@ public class AddGoalView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new AddGoalPresenter();
-        //setContentView(R.layout.activity_add_goal_view);
         bind = DataBindingUtil.setContentView(this, R.layout.activity_add_goal_view);
         bind.goalDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +58,17 @@ public class AddGoalView extends AppCompatActivity {
         super.onStop();
     }
     public void saveGoal() {
+        Intent addGoal = new Intent();
         EditText goalTitle = (EditText)bind.goalTitle;
         String title = goalTitle.getText().toString();
         presenter.goal.setTitle(title);
-        System.out.println(presenter.goal.getTitle());
+        addGoal.putExtra("Goal", presenter.getGoal());
+        setResult(RESULT_OK, addGoal);
         Toast.makeText(getBaseContext(), presenter.goal.getTitle(), Toast.LENGTH_SHORT).show();
+        finish();
+        /*String title = goalTitle.getText().toString();
+        presenter.goal.setTitle(title);
+        System.out.println(presenter.goal.getTitle());*/
     }
     public void addTags(){}
     public void addTitle(){}
