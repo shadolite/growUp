@@ -15,12 +15,21 @@ import com.cs246.growup.Presenters.BrowseGoalPresenter;
 import com.cs246.growup.R;
 import com.google.android.material.tabs.TabLayout;
 
+/**
+ * Class for the browse goals activity.
+ */
 public class BrowseGoalsView extends AppCompatActivity {
+
     private BrowseGoalPresenter presenter;
     private RecyclerView.Adapter recyclerViewAdapter;
 
+    /**
+     * Initializes all the data for the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse_goals_view);
 
@@ -31,6 +40,9 @@ public class BrowseGoalsView extends AppCompatActivity {
         setTabLayoutListeners();
     }
 
+    /**
+     * Sets listeners for the tab layout.
+     */
     private void setTabLayoutListeners() {
         TabLayout tabLayout = findViewById(R.id.goalsTabLayout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
@@ -47,10 +59,16 @@ public class BrowseGoalsView extends AppCompatActivity {
         });
     }
 
+    /**
+     * Loads data into the activity.
+     */
     public void notifyDataReady() {
         loadRecyclerView();
     }
 
+    /**
+     * Loads data into the recycler view.
+     */
     private void loadRecyclerView() {
         RecyclerView itemRecyclerView = (RecyclerView) findViewById(R.id.goalList);
 
