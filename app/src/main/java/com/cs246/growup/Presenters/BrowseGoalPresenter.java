@@ -7,18 +7,31 @@ import com.cs246.growup.Views.BrowseGoalsView;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Presenter for the browse goal activity.
+ */
 public class BrowseGoalPresenter {
+
     private List<Goal> currentGoals;
     private List<Goal> completedGoals;
     private boolean userReady;
     BrowseGoalsView browseGoalsActivity;
 
+    /**
+     * Constructor
+     * @param browseGoalsView Activity the presenter belongs to.
+     */
     public BrowseGoalPresenter(BrowseGoalsView browseGoalsView) {
+
         currentGoals = new ArrayList<>();
         completedGoals = new ArrayList<>();
         browseGoalsActivity = browseGoalsView;
     }
 
+    /**
+     * Initializes the presenter based on user data.
+     * @param user
+     */
     public void initialize(User user){
 
         loadCurrentGoals(user);
@@ -27,6 +40,10 @@ public class BrowseGoalPresenter {
         browseGoalsActivity.notifyDataReady();
     }
 
+    /**
+     * Loads completed goals from the user.
+     * @param user User to search for completed goals.
+     */
     private void loadCompletedGoals(User user) {
         completedGoals.clear();
 
@@ -38,6 +55,10 @@ public class BrowseGoalPresenter {
         }
     }
 
+    /**
+     * Loads current goals from the user.
+     * @param user User to search for current goals.
+     */
     private void loadCurrentGoals(User user) {
         currentGoals.clear();
 
@@ -49,10 +70,18 @@ public class BrowseGoalPresenter {
         }
     }
 
+    /**
+     * Gets current goals from the presenter.
+     * @return Returns a list of Goal objects.
+     */
     public List<Goal> getCurrentGoals() {
         return currentGoals;
     }
 
+    /**
+     * Gets completed goals from the presenter.
+     * @return Returns a list of Goal objects.
+     */
     public List<Goal> getCompletedGoals() {
         return completedGoals;
     }
