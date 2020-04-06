@@ -12,21 +12,27 @@ import com.cs246.growup.Models.Item;
 import com.cs246.growup.R;
 import java.util.List;
 
+/**
+ * Adapter for browsing an Event object.
+ */
 public class BrowseEventAdapter extends RecyclerView.Adapter<BrowseEventAdapter.EventViewHolder> {
 
     private List<Item> items;
 
-    // Provide a suitable constructor (depends on the kind of items)
+    /**
+     * Constructor
+     * @param items Items to adapt.
+     */
     public BrowseEventAdapter(List<Item> items) {
         this.items = items;
     }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    /**
+     * Internal class. Provide a reference to the views for each data item.
+     */
     public static class EventViewHolder extends RecyclerView.ViewHolder {
 
-        // each data item is just a string in this case
+
         public TextView eventPeriodTextView;
         public TextView eventTitleTextView;
 
@@ -38,7 +44,12 @@ public class BrowseEventAdapter extends RecyclerView.Adapter<BrowseEventAdapter.
         }
     }
 
-    // Create new views (invoked by the layout manager)
+    /**
+     * Create new views (invoked by the layout manager)
+     * @param parent Context parent.
+     * @param viewType
+     * @return Returns an EventViewHolder object.
+     */
     @Override
     public BrowseEventAdapter.EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
@@ -52,7 +63,11 @@ public class BrowseEventAdapter extends RecyclerView.Adapter<BrowseEventAdapter.
         return viewHolder;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    /**
+     * Replaces the contents of a view (invoked by the layout manager)
+     * @param holder Contains the views to replace data in.
+     * @param position Position of the item in the list; used to get the information to load.
+     */
     @Override
     public void onBindViewHolder(BrowseEventAdapter.EventViewHolder holder, int position) {
         // - get element from your dataset at this position
@@ -66,7 +81,10 @@ public class BrowseEventAdapter extends RecyclerView.Adapter<BrowseEventAdapter.
         titleView.setText(item.getTitle());
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    /**
+     * Gets the item count.
+     * @return Returns the number of items as an int.
+     */
     @Override
     public int getItemCount() {
         return items.size();

@@ -5,26 +5,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.cs246.growup.Models.Goal;
 import com.cs246.growup.R;
-
 import java.util.List;
 
+/**
+ * Adapter for browsing goal objects.
+ */
 public class BrowseGoalAdapter extends RecyclerView.Adapter<BrowseGoalAdapter.GoalViewHolder> {
 
     private List<Goal> goals;
 
-    // Provide a suitable constructor (depends on the kind of items)
+    /**
+     * Constructor
+     * @param goals Items to adapt.
+     */
     public BrowseGoalAdapter(List<Goal> goals) {
         this.goals = goals;
     }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    /**
+     * Internal class. Provide a reference to the views for each data item.
+     */
     public static class GoalViewHolder extends RecyclerView.ViewHolder {
 
         public TextView titleTextView;
@@ -40,7 +43,12 @@ public class BrowseGoalAdapter extends RecyclerView.Adapter<BrowseGoalAdapter.Go
         }
     }
 
-    // Create new views (invoked by the layout manager)
+    /**
+     * Create new views (invoked by the layout manager)
+     * @param parent Context parent.
+     * @param viewType
+     * @return Returns a NoteViewHolder object.
+     */
     @Override
     public BrowseGoalAdapter.GoalViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
@@ -54,7 +62,11 @@ public class BrowseGoalAdapter extends RecyclerView.Adapter<BrowseGoalAdapter.Go
         return viewHolder;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    /**
+     * Replaces the contents of a view (invoked by the layout manager)
+     * @param holder Contains the views to replace data in.
+     * @param position Position of the item in the list; used to get the information to load.
+     */
     @Override
     public void onBindViewHolder(GoalViewHolder holder, int position) {
         // - get element from your dataset at this position
@@ -74,7 +86,10 @@ public class BrowseGoalAdapter extends RecyclerView.Adapter<BrowseGoalAdapter.Go
         ));
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    /**
+     * Gets the item count.
+     * @return Returns the number of items as an int.
+     */
     @Override
     public int getItemCount() {
         return goals.size();
