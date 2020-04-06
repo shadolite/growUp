@@ -40,18 +40,41 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Main Activity class.
+ */
 public class MainActivity extends AppCompatActivity implements Listener {
+
     ActivityMainBinding bind;
     boolean isRotated = false;
     private MainPresenter presenter;
     private RecyclerView.Adapter recyclerViewAdapter;
 
-
-
-
+    /**
+     * Initializes necessary data to run the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SetFloatingActionButtonListeners();
+
+        Date entryDate = Calendar.getInstance().getTime();
+        setDateText(entryDate);
+
+        presenter = new MainPresenter(this);
+        presenter.initialize();
+        presenter.setSelectedDate(entryDate);
+        presenter.selectEntry();
+
+        setBottomNavigationListener();
+        setTabLayoutListeners();
+    }
+
+    /**
+     * Sets the listeners for the Floating Action Button.
+     */
+    private void SetFloatingActionButtonListeners() {
         bind = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         bind.floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
                 startActivityForResult(new Intent(getApplicationContext(), AddGoalView.class), 200);
             }
         });
-        
+
         bind.fabAddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,23 +115,12 @@ public class MainActivity extends AppCompatActivity implements Listener {
                 startActivity(intentEntry);
             }
         });
-
-
-
-        Date entryDate = Calendar.getInstance().getTime(); //cal.getTime();
-        setDateText(entryDate);
-
-        presenter = new MainPresenter(this);
-        presenter.initialize();
-        presenter.setSelectedDate(entryDate);
-        presenter.selectEntry();
-
-        setBottomNavigationListener();
-        setSearchListener();
-
-        setTabLayoutListeners();
     }
 
+    /**
+     * Sets the date text of the main display.
+     * @param entryDate Date to convert to text.
+     */
     private void setDateText(Date entryDate) {
         TextView theDate = (TextView) findViewById(R.id.currentDate);
         DateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy");
@@ -118,6 +130,12 @@ public class MainActivity extends AppCompatActivity implements Listener {
         theDate.setText(strDate);
     }
 
+    /**
+     * Event handler for child activities passing data back to the main activity.
+     * @param requestCode Indicates what data is being passed back.
+     * @param resultCode Result of the child activity.
+     * @param intent Intent to retrieve the information from.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -134,16 +152,16 @@ public class MainActivity extends AppCompatActivity implements Listener {
             c.set(year, month, dayOfMonth, 0, 0);
             Date date = c.getTime();
             presenter.setSelectedDate(date);
-
-
         }
-
-
     }
 
+    /**
+     * Sets the listeners for the tab layout.
+     */
     private void setTabLayoutListeners() {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+
             @Override
             public void onTabSelected(TabLayout.Tab tab){
                 loadRecyclerView();
@@ -157,6 +175,11 @@ public class MainActivity extends AppCompatActivity implements Listener {
         });
     }
 
+    /**
+     * Inflates menu options.
+     * @param menu Menu to inflate.
+     * @return Returns true.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -164,6 +187,11 @@ public class MainActivity extends AppCompatActivity implements Listener {
         return true;
     }
 
+    /**
+     * Event handler for menu item selection.
+     * @param item Item that was selected.
+     * @return Returns true.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Fragment fragment;
@@ -185,48 +213,56 @@ public class MainActivity extends AppCompatActivity implements Listener {
         return true;
     }
 
-
-
-
-    private void setSearchListener() {
-
-    }
-
+    /**
+     * Sets the listener for the bottom navigation bar.
+     */
     private void setBottomNavigationListener() {
+
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
-
-        BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener(){
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item){
-
-                //loadFragment(item.getItemId());
-                return true;
-            }
-        };
-
+        BottomNavigationView.OnNavigationItemSelectedListener listener = item -> true;
         bottomNav.setOnNavigationItemSelectedListener(listener);
     }
 
+    /**
+     * Registers a fragment as a listener.
+     * @param fragment Fragment to register.
+     */
     public void registerFragment(Listener fragment){
         presenter.registerListeners(fragment);
     }
 
+    /**
+     * Event handler for selecting the calendar button from the bottom navigation bar.
+     * @param item Menu item that was selected.
+     */
     public void calendar_OnClick(MenuItem item) {
         startActivityForResult(new Intent(getApplicationContext(), CalendarActivity.class), 123);
     }
 
+    /**
+     * Event handler for selecting the goal button from the bottom navigation bar.
+     * @param item Menu item that was selected.
+     */
     public void goals_OnClick(MenuItem item) {
         Intent goalsIntent = new Intent(MainActivity.this, BrowseGoalsView.class);
         goalsIntent.putExtra("User", presenter.getUser());
         startActivity(goalsIntent);
     }
 
+    /**
+     * Loads the updated data from the presenter into the main activity.
+     * @param user User containing updated data to load.
+     * @param config Updated config info to load.
+     */
     @Override
     public void notifyDataReady(User user, Config config) {
         loadRecyclerView();
         setDateText(presenter.getSelectedDate());
     }
 
+    /**
+     * Loads data into the recycler view.
+     */
     private void loadRecyclerView() {
         RecyclerView itemRecyclerView = (RecyclerView) findViewById(R.id.searchList);
 
@@ -248,12 +284,11 @@ public class MainActivity extends AppCompatActivity implements Listener {
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Loads updated config data into the main activity.
+     */
     @Override
     public void notifyConfigChanged() {
 
-    }
-
-    public void jumpToDate(Date date){
-        presenter.setSelectedDate(date);
     }
 }
