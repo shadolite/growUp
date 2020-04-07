@@ -19,11 +19,20 @@ import com.cs246.growup.Presenters.AddGoalPresenter;
 import com.cs246.growup.R;
 import com.cs246.growup.databinding.ActivityAddGoalViewBinding;
 
+/**
+ * Activity for adding a goal.
+ */
 public class AddGoalView extends AppCompatActivity {
+
     ActivityAddGoalViewBinding bind;
     private AddGoalPresenter presenter;
 
     //@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
+    /**
+     * Initializes data for the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,11 @@ public class AddGoalView extends AppCompatActivity {
         });
     }
 
+    /**
+     * Inflates the options menu.
+     * @param menu Menu to inflate.
+     * @return Returns true.
+     */
    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
        MenuInflater inflater = getMenuInflater();
@@ -52,11 +66,17 @@ public class AddGoalView extends AppCompatActivity {
         return true;
     }
 
-
+    /**
+     * Runs necessary methods when activity is stopped.
+     */
     @Override
     public void onStop() {
         super.onStop();
     }
+
+    /**
+     * Saves the user input as a goal, and calls finish() on the Activity.
+     */
     public void saveGoal() {
         Intent addGoal = new Intent();
         EditText goalTitle = (EditText)bind.goalTitle;
@@ -76,6 +96,7 @@ public class AddGoalView extends AppCompatActivity {
         presenter.goal.setTitle(title);
         System.out.println(presenter.goal.getTitle());*/
     }
+
     public void addTags(){}
     public void addTitle(){}
     public void addDescription(){}

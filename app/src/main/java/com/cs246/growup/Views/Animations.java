@@ -4,7 +4,16 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 
+/**
+ * Animations class for the floating action button.
+ */
 public class Animations {
+    /**
+     * Rotates the add button
+     * @param view Button view to rotate.
+     * @param rotate Indicates whether the button should rotate.
+     * @return Returns the original rotate property.
+     */
     public static boolean rotateFabAdd(final View view, boolean rotate) {
         view.animate().setDuration(300).setListener(new AnimatorListenerAdapter() {
             @Override
@@ -15,6 +24,10 @@ public class Animations {
         return rotate;
     }
 
+    /**
+     * Makes an additional floating action button invisible.
+     * @param viewIn Floating action button to make invisible.
+     */
     public static void popIn(final View viewIn) {
         viewIn.setVisibility(View.VISIBLE);
         viewIn.setAlpha(0f);
@@ -28,6 +41,10 @@ public class Animations {
         }).alpha(1f).start();
     }
 
+    /**
+     * Makes an additional floating action button visible.
+     * @param viewOut Floating action button to make visible.
+     */
     public static void popOut(final View viewOut) {
         viewOut.setVisibility(View.VISIBLE);
         viewOut.setAlpha(1f);
@@ -42,6 +59,10 @@ public class Animations {
                 }).alpha(0f).start();
     }
 
+    /**
+     * Sets initial visibility for floating action button.
+     * @param view Floating action button to set visibility for.
+     */
     public static void initial(final View view) {
         view.setVisibility(View.GONE);
         view.setTranslationY(view.getHeight());

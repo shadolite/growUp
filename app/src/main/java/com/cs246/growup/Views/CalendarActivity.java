@@ -11,8 +11,14 @@ import android.widget.CalendarView;
 
 import com.cs246.growup.R;
 
+/**
+ * Activity for the calendar
+ */
 public class CalendarActivity extends AppCompatActivity {
-
+    /**
+     * Initializes data for the calendar.
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,11 @@ public class CalendarActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Inflates the options menu.
+     * @param menu Menu to inflate.
+     * @return Returns true.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
