@@ -1,22 +1,17 @@
 package com.cs246.growup.Views;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.CalendarView;
-import android.widget.Toast;
 
-import com.cs246.growup.Presenters.BrowseCalenderPresenter;
 import com.cs246.growup.R;
 
 public class CalendarActivity extends AppCompatActivity {
-
-    private static final String TAG = "CalendarFragment";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,5 +37,4 @@ public class CalendarActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-
 }
