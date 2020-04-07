@@ -19,6 +19,7 @@ import com.cs246.growup.Adapters.BrowseCheckBoxAdapter;
 import com.cs246.growup.Adapters.BrowseEventAdapter;
 import com.cs246.growup.Adapters.BrowseNoteAdapter;
 import com.cs246.growup.Models.Config;
+import com.cs246.growup.Models.Entry;
 import com.cs246.growup.Models.Goal;
 import com.cs246.growup.Models.User;
 import com.cs246.growup.Presenters.Listener;
@@ -104,8 +105,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         bind.fabAddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentEntry = new Intent(MainActivity.this, AddEntryView.class);
-                startActivity(intentEntry);
+                startActivityForResult(new Intent(getApplicationContext(), AddEntryView.class), 300);
             }
         });
     }
@@ -135,6 +135,11 @@ public class MainActivity extends AppCompatActivity implements Listener {
         if (requestCode == 200 && resultCode == RESULT_OK) {
             Goal goal = (Goal) intent.getSerializableExtra("Goal");
             presenter.getUser().addGoal(goal);
+        }
+
+        if(requestCode == 300 && resultCode == RESULT_OK) {
+            Entry entry = (Entry) intent.getSerializableExtra("Entry");
+            presenter.getUser().addEntry(entry);
         }
 
         if (requestCode == 123 && resultCode == RESULT_OK) {
@@ -187,10 +192,8 @@ public class MainActivity extends AppCompatActivity implements Listener {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Fragment fragment;
-
         switch (item.getItemId()) {
-            case R.id.menu_search:
+            case R.id.searchIcon:
                 Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
                 Intent intentSearch = new Intent(MainActivity.this, SearchResultsView.class);
                 startActivity(intentSearch);

@@ -37,7 +37,8 @@
         <activity
             android:name=".Views.SearchResultsView"
             android:exported="true"
-            android:label="Search Results" />
+            android:label="Search"
+            android:parentActivityName=".Views.MainActivity" />
     </application>
 
 </manifest>

@@ -90,7 +90,7 @@ public class AddGoalView extends AppCompatActivity {
         presenter.goal.setDescription(description);
         addGoal.putExtra("Goal", presenter.getGoal());
         setResult(RESULT_OK, addGoal);
-        Toast.makeText(getBaseContext(), presenter.goal.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "New Goal added", Toast.LENGTH_SHORT).show();
         finish();
         /*String title = goalTitle.getText().toString();
         presenter.goal.setTitle(title);

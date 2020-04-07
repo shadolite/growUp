@@ -49,8 +49,8 @@ public class SearchResultsView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        searchPresenter = new SearchPresenter();
-        rootView = null;
+//        searchPresenter = new SearchPresenter();
+//        rootView = null;
         setContentView(R.layout.dp_goal);
 
     }
@@ -69,6 +69,7 @@ public class SearchResultsView extends AppCompatActivity {
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+//            setContentView(R.layout.dp_goal);
             searchResultsPresenter = new SearchResultsPresenter();
             rootView = null;
         }

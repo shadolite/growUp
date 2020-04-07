@@ -40,6 +40,31 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/entry_note"
                 android:inputType="textMultiLine" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/entrySaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/entryNoteLayout"
+            app:layout_constraintVertical_bias="0.100000024"
+            app:srcCompat="@drawable/ic_check_accent_color_24dp" />
+
+        <ImageButton
+            android:id="@+id/entryDeleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/entryNoteLayout"
+            app:layout_constraintVertical_bias="0.100000024"
+            app:srcCompat="@drawable/ic_action_delete" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

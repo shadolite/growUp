@@ -15,6 +15,7 @@ public class Entry implements Serializable {
     public List <Item> items;
     public Date entryDate;
     private String title;
+    private String note;
     private Goal goal;
 
     /**
@@ -56,9 +57,11 @@ public class Entry implements Serializable {
         items.remove(item);
     }
 
-    public String getEntry(Entry goal) {
-        return title;
-    }
+    /**
+     * Gets the title of the entry.
+     * @return Returns the title as a string.
+     */
+    public String getTitle() { return title; }
 
     /**
      * Sets the title for the entry.
@@ -68,7 +71,23 @@ public class Entry implements Serializable {
         this.title = title;
     }
 
+    /**
+     * Gets the note of the entry.
+     * @return Returns the note as a string.
+     */
+    public String getNote() { return note; }
+
+    /**
+     * Sets the note for the entry.
+     * @param note
+     */
+    public void setNote(String note) { this.note = note; }
+
     public String getClass(SearchData record) {
+        return title;
+    }
+
+    public String getEntry(Entry goal) {
         return title;
     }
 }
