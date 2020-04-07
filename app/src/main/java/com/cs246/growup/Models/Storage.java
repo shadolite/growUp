@@ -3,21 +3,33 @@ package com.cs246.growup.Models;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import android.content.Context;
-import com.google.gson.Gson;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+/**
+ * Storage class
+ */
 public class Storage {
+
     private Context context;
 
+    /**
+     * Non-default constructor.
+     * @param context Context using the Storage class.
+     */
     public Storage(Context context)  {
         this.context = context;
     }
 
+    /**
+     * Writes string data to a local file.
+     * @param filename Name of the file to write to.
+     * @param data String data to write.
+     * @return Returns true if successful; else returns false.
+     */
     public boolean writeFile(String filename, String data){
         try {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(context.openFileOutput(filename, Context.MODE_PRIVATE)));
@@ -31,18 +43,21 @@ public class Storage {
         }
     }
 
-    public static void readFile(Context context, User user) throws FileNotFoundException {
-        StringBuilder sb = new StringBuilder();
-        String json = sb.toString();
-        Gson gson = new Gson();
-        String filename = "myfile.txt";
+    /**
+     * Reads from a file, and returns the contents as a string.
+     * @param filename Name of the file to read.
+     * @return Returns the file contents as a String.
+     */
+    public String readFile(String filename){
 
+        String line = "";
+        try {
+        StringBuilder sb = new StringBuilder();
         FileInputStream fis;
-        fis = context.openFileInput(filename);
+            fis = context.openFileInput(filename);
         InputStreamReader isr = new InputStreamReader(fis);
         BufferedReader bufferedReader = new BufferedReader(isr);
 
-        String line;
         while (true) {
             try {
                 if (!((line = bufferedReader.readLine()) != null)) break;
@@ -50,13 +65,13 @@ public class Storage {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            return line;
         }
-        String s = gson.toJson(user);
-    }
-
-
-    public String readFile(String s) {
-        return null;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        finally {
+            return line;
+        }
     }
 }
