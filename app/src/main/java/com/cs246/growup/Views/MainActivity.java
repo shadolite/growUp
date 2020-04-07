@@ -1,14 +1,5 @@
 package com.cs246.growup.Views;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -18,13 +9,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.cs246.growup.Adapters.BrowseCheckBoxAdapter;
 import com.cs246.growup.Adapters.BrowseEventAdapter;
 import com.cs246.growup.Adapters.BrowseNoteAdapter;
 import com.cs246.growup.Models.Config;
 import com.cs246.growup.Models.Goal;
-import com.cs246.growup.Models.SearchData;
-import com.cs246.growup.Models.SearchResult;
 import com.cs246.growup.Models.User;
 import com.cs246.growup.Presenters.Listener;
 import com.cs246.growup.Presenters.MainPresenter;
@@ -37,8 +32,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Main Activity class.
@@ -197,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements Listener {
         Fragment fragment;
 
         switch (item.getItemId()) {
-            case R.id.searchIcon:
+            case R.id.menu_search:
                 Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
                 Intent intentSearch = new Intent(MainActivity.this, SearchResultsView.class);
                 startActivity(intentSearch);
