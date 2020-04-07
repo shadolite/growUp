@@ -153,7 +153,7 @@ public class SearchResultsView extends AppCompatActivity {
                         assert child != null;
                         int position = rvResults.getChildAdapterPosition(child);
                         SearchData record = SearchResultsPresenter.getSearchResults().getData().get(position);
-                        //((MainActivity) Objects.requireNonNull(getActivity())).loadFragment(record);
+
                     }
                     return super.onDoubleTapEvent(e);
                 }

@@ -36,9 +36,9 @@ public class BrowsePresenter {
         String[] split = reference.split(":");
         int verse = Integer.parseInt(split[1]);
         int posChapter = split[0].lastIndexOf(" ");
-        String chapter = split[0].substring(posChapter+1);
-        String book = split[0].substring(0,posChapter);
-        Log.d("split",book + " : " + chapter + " : " + verse);
+        String goals = split[0].substring(posChapter+1);
+        String entries = split[0].substring(0,posChapter);
+        Log.d("split",goals + " : " + entries);
     }
 
     public void selectEntry(String entry) {
@@ -53,7 +53,7 @@ public class BrowsePresenter {
         }
     }
 
-    public void selectBook(Entry goal) {
+    public void setSelectedGoal(Entry goal) {
         if (library == null) {
             return;
         }
@@ -66,25 +66,10 @@ public class BrowsePresenter {
         }
     }
 
-    public void selectChapter(String chapterStr) {
-        if (library == null) {
-            return;
-        }
-        int chapter = 0;
-        try {
-            chapter = Integer.parseInt(chapterStr);
-        }
-        catch (NumberFormatException nfe) {
-            return;
-        }
-        if (selectedGoal == null) {
-            return;
-        }
 
 
-    }
 
-    // Functions for Fragment Adapters
+
 
     public List<String> getValidEntry() {
         return library.getEntryTitles();

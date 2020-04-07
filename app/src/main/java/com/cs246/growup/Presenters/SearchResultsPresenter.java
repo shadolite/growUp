@@ -31,19 +31,19 @@ public class SearchResultsPresenter {
         this.library = library;
     }
 
-    // Functions for Fragment requests
 
-    public void searchTerm(String term, String volumeFilter) {
+
+    public void searchTerm(String term, String entryFilter) {
         if (library == null) {
             return;
         }
-        if (volumeFilter == null) {
-            volumeFilter = "";
+        if (entryFilter == null) {
+            entryFilter = "";
         }
-        if (prevTerm == null || term.length() < prevTerm.length() || prevVolumeFilter == null || !prevVolumeFilter.contentEquals(volumeFilter)) {
+        if (prevTerm == null || term.length() < prevTerm.length() || prevVolumeFilter == null || !prevVolumeFilter.contentEquals(entryFilter)) {
             searchResults.clear();
             for (Entry entry : library.getEntry(entry)) {
-                if (!volumeFilter.contentEquals("") && !volumeFilter.contentEquals(entry.getEntry(entry)))
+                if (!entryFilter.contentEquals("") && !entryFilter.contentEquals(entry.getEntry(entry)))
                     continue;
                 for (Goal goal : entry.getGoal()) {
                     searchResults.add(entry, goal);
@@ -63,7 +63,7 @@ public class SearchResultsPresenter {
             Log.d("SearchPresenter","Size of SearchResults: "+searchResults.getData().size());
         }
         prevTerm = term;
-        prevVolumeFilter = volumeFilter;
+        prevVolumeFilter = entryFilter;
         searchResults.setSearchTerm(term);
     }
 
