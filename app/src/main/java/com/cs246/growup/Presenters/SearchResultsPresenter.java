@@ -20,6 +20,9 @@ public class SearchResultsPresenter {
     private String entry;
     private Goal goal;
 
+    /**
+     * Presenter for the search
+     */
     public SearchResultsPresenter() {
         searchResults = new SearchResult();
         library = null;
@@ -27,11 +30,19 @@ public class SearchResultsPresenter {
         prevTerm = null;
     }
 
+    /**
+     * Gets Library
+     * @param library
+     */
     public void setLibrary(Library library) {
         this.library = library;
     }
 
-
+    /**
+     * Sets the term of the search
+     * @param term
+     * @param entryFilter
+     */
 
     public void searchTerm(String term, String entryFilter) {
         if (library == null) {
@@ -68,11 +79,18 @@ public class SearchResultsPresenter {
     }
 
 
-
+    /**
+     * Gets the results
+     * @return
+     */
     public static SearchResult getSearchResults() {
         return searchResults;
     }
 
+    /**
+     * Gets the names
+     * @return
+     */
     public List<String> getEntryTitles() {
         return library.getEntryTitles();
     }

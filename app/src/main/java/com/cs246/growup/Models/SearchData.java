@@ -1,5 +1,8 @@
 package com.cs246.growup.Models;
 
+/**
+ * Search the data
+ */
 public class SearchData {
     private Entry entry;
     private Goal goal;
