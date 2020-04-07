@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 public class SearchResultsView extends AppCompatActivity {
 
     private View rootView;
@@ -43,7 +42,8 @@ public class SearchResultsView extends AppCompatActivity {
     private SearchPresenter searchPresenter;
     private Spinner spFilter;
     private GestureDetector gd;
-    // TODO: Save the Adapters to simplify the code below
+
+
 
 
     @Override
@@ -51,8 +51,7 @@ public class SearchResultsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         searchPresenter = new SearchPresenter();
         rootView = null;
-
-
+        setContentView(R.layout.dp_goal);
 
     }
 
